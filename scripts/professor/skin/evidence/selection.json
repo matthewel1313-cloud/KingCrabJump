@@ -1,0 +1,13 @@
+{
+  "schema": "design-selection/1",
+  "selected_design": "king-crab-professor",
+  "user_confirmation": "Owner-written brief: 'Tweed/brown blazer pattern on the body shell, with cream or gold accents on the limbs. A tiny gold crown on top of the head, tilted slightly... Small round glasses in front of the eye display. A red \"pen\" tip on the right claw. Export as king_crab_professor.skin.'",
+  "references": [
+    {
+      "role": "selected_design",
+      "path": "evidence/design-brief.md",
+      "sha256": "c9379a33debeadc8b2b712b6a703822f636d37437d4a4cb6240bd42dfbb020cb",
+      "bytes": 774
+    }
+  ]
+}

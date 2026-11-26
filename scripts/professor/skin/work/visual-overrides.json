@@ -1,0 +1,372 @@
+[
+ {
+  "link": "base_link",
+  "geom": "base_link_visual",
+  "rgba": [
+   0.180392,
+   0.12549,
+   0.098039,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_shoulder_link",
+  "geom": "LF_shoulder_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_upper_arm_link",
+  "geom": "LF_upper_arm_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_forearm_link",
+  "geom": "LF_forearm_link_visual",
+  "rgba": [
+   0.788235,
+   0.635294,
+   0.152941,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_palm_link",
+  "geom": "LF_palm_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_palm_pad_f_link",
+  "geom": "LF_palm_pad_f_link_visual",
+  "rgba": [
+   0.352941,
+   0.243137,
+   0.168627,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_palm_pad_b_link",
+  "geom": "LF_palm_pad_b_link_visual",
+  "rgba": [
+   0.352941,
+   0.243137,
+   0.168627,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_finger_link",
+  "geom": "LF_finger_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_finger_tip_link",
+  "geom": "LF_finger_tip_link_visual",
+  "rgba": [
+   0.788235,
+   0.635294,
+   0.152941,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_finger_grip_insert_link",
+  "geom": "LF_finger_grip_insert_link_visual",
+  "rgba": [
+   0.352941,
+   0.243137,
+   0.168627,
+   1.0
+  ]
+ },
+ {
+  "link": "LF_palm_grip_insert_link",
+  "geom": "LF_palm_grip_insert_link_visual",
+  "rgba": [
+   0.352941,
+   0.243137,
+   0.168627,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_shoulder_link",
+  "geom": "RF_shoulder_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_upper_arm_link",
+  "geom": "RF_upper_arm_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_forearm_link",
+  "geom": "RF_forearm_link_visual",
+  "rgba": [
+   0.788235,
+   0.635294,
+   0.152941,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_palm_link",
+  "geom": "RF_palm_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_palm_pad_f_link",
+  "geom": "RF_palm_pad_f_link_visual",
+  "rgba": [
+   0.352941,
+   0.243137,
+   0.168627,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_palm_pad_b_link",
+  "geom": "RF_palm_pad_b_link_visual",
+  "rgba": [
+   0.352941,
+   0.243137,
+   0.168627,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_finger_link",
+  "geom": "RF_finger_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_finger_tip_link",
+  "geom": "RF_finger_tip_link_visual",
+  "rgba": [
+   0.784314,
+   0.062745,
+   0.180392,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_finger_grip_insert_link",
+  "geom": "RF_finger_grip_insert_link_visual",
+  "rgba": [
+   0.352941,
+   0.243137,
+   0.168627,
+   1.0
+  ]
+ },
+ {
+  "link": "RF_palm_grip_insert_link",
+  "geom": "RF_palm_grip_insert_link_visual",
+  "rgba": [
+   0.352941,
+   0.243137,
+   0.168627,
+   1.0
+  ]
+ },
+ {
+  "link": "LM_hip_link",
+  "geom": "LM_hip_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "LM_thigh_link",
+  "geom": "LM_thigh_link_visual",
+  "rgba": [
+   0.788235,
+   0.635294,
+   0.152941,
+   1.0
+  ]
+ },
+ {
+  "link": "LM_calf_link",
+  "geom": "LM_calf_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "LM_foot_tip_link",
+  "geom": "LM_foot_tip_link_visual",
+  "rgba": [
+   0.180392,
+   0.12549,
+   0.098039,
+   1.0
+  ]
+ },
+ {
+  "link": "RM_hip_link",
+  "geom": "RM_hip_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "RM_thigh_link",
+  "geom": "RM_thigh_link_visual",
+  "rgba": [
+   0.788235,
+   0.635294,
+   0.152941,
+   1.0
+  ]
+ },
+ {
+  "link": "RM_calf_link",
+  "geom": "RM_calf_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "RM_foot_tip_link",
+  "geom": "RM_foot_tip_link_visual",
+  "rgba": [
+   0.180392,
+   0.12549,
+   0.098039,
+   1.0
+  ]
+ },
+ {
+  "link": "LR_hip_link",
+  "geom": "LR_hip_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "LR_thigh_link",
+  "geom": "LR_thigh_link_visual",
+  "rgba": [
+   0.788235,
+   0.635294,
+   0.152941,
+   1.0
+  ]
+ },
+ {
+  "link": "LR_calf_link",
+  "geom": "LR_calf_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "LR_foot_tip_link",
+  "geom": "LR_foot_tip_link_visual",
+  "rgba": [
+   0.180392,
+   0.12549,
+   0.098039,
+   1.0
+  ]
+ },
+ {
+  "link": "RR_hip_link",
+  "geom": "RR_hip_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "RR_thigh_link",
+  "geom": "RR_thigh_link_visual",
+  "rgba": [
+   0.788235,
+   0.635294,
+   0.152941,
+   1.0
+  ]
+ },
+ {
+  "link": "RR_calf_link",
+  "geom": "RR_calf_link_visual",
+  "rgba": [
+   0.929412,
+   0.886275,
+   0.776471,
+   1.0
+  ]
+ },
+ {
+  "link": "RR_foot_tip_link",
+  "geom": "RR_foot_tip_link_visual",
+  "rgba": [
+   0.180392,
+   0.12549,
+   0.098039,
+   1.0
+  ]
+ }
+]

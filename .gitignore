@@ -1,0 +1,32 @@
+# Large renders. Git can't filter by size, so all video renders and their working folders are
+# ignored (the 50 MB+ final cuts live on YouTube / Instagram / X). The GIFs in media/ are tracked.
+*.mp4
+*.mov
+*.mkv
+*.wav
+captures/
+out/
+render/out/
+scripts/professor/output/
+scripts/professor/workspace/
+scripts/professor/skin/work/simulation/
+scripts/professor/skin/work/shell.stl
+scripts/professor/skin/work/ams.3mf
+scripts/professor/motion/bundle/
+scripts/professor/motion/bundle_alt_F/
+
+# Caches and virtual environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+.pytest_cache/
+MUJOCO_LOG.TXT
+
+# Secrets and local config
+.env
+.env.*
+*.pem
+*.key
+credentials*.json

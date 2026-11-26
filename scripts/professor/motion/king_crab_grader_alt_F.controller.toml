@@ -1,0 +1,44 @@
+# King Crab Grades Your Midterm, the F cut (no dance mode): the cascade, the safety limits and `safe`.
+# The modes, their exports and their switches are in manifests.json beside this file.
+# Every number below is copied from KingKongRobotics/jumper deploy/jumper.controller.toml,
+# where each is explained and measured; nothing here is tuned anew.
+
+[fsm]
+initial_state = "locomotion"
+warm_start_ref = "locomotion"
+safe_state = "safe"
+exclusive = true
+tilt_limit = 0.873
+state_timeout_ms = 100
+command_timeout_ms = 500
+mode_switch_ramp_s = 1.0
+pose_reach_tol = 0.10
+warm_start_duration_s = 2.0
+ramp_kp = 15.0
+ramp_kd = 0.8
+click_window_ms = 300
+
+[[fsm.state]]
+name = "safe"
+hold_current = true
+kd = 0.01
+
+[[fsm.rule]]
+when = "feedback_stale"
+enter = "safe"
+
+[[fsm.rule]]
+when = "tilted"
+enter = "safe"
+
+[[fsm.rule]]
+when = "in_state:safe"
+enter = "@initial"
+
+[[fsm.rule]]
+when = "button:claw_right"
+enter = "claw_right"
+
+[[fsm.rule]]
+when = "always"
+enter = "locomotion"

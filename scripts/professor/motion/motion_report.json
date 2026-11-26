@@ -1,0 +1,62 @@
+{
+ "source": "motion/sequence.npz (final run, seed 7, physics 1000 Hz, controller 200 Hz)",
+ "mode_spans": [
+  {
+   "mode": "locomotion",
+   "from_s": 0.0,
+   "to_s": 5.46
+  },
+  {
+   "mode": "claw_right",
+   "from_s": 5.46,
+   "to_s": 16.6
+  },
+  {
+   "mode": "locomotion",
+   "from_s": 16.61,
+   "to_s": 22.0
+  },
+  {
+   "mode": "dance_crab",
+   "from_s": 22.0,
+   "to_s": 27.45
+  },
+  {
+   "mode": "locomotion",
+   "from_s": 27.46,
+   "to_s": 30.0
+  }
+ ],
+ "crab_walk_distance_m": 0.39,
+ "max_base_tilt_deg": 16.2,
+ "base_height_range_m": [
+  0.1,
+  0.114
+ ],
+ "paper_5": {
+  "start": [
+   0.26499998569488525,
+   -0.4880000054836273,
+   0.07500000298023224
+  ],
+  "at_grasp_8.0s": [
+   0.2630000114440918,
+   -0.4869999885559082,
+   0.07699999958276749
+  ],
+  "max_height_m": 0.271,
+  "at_release_15.95s": [
+   0.22699999809265137,
+   -0.6439999938011169,
+   0.03099999949336052
+  ],
+  "final": [
+   0.2280000001192093,
+   -0.6439999938011169,
+   0.0010000000474974513
+  ],
+  "pad_to_paper_distance_while_held_m": 0.036
+ },
+ "other_papers_max_displacement_m": 0.0044,
+ "episode_resets": 0
+}

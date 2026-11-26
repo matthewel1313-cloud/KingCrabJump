@@ -1,0 +1,8 @@
+{
+ "steps_compared": 4400,
+ "t_max": 21.995,
+ "same_modes": true,
+ "max_joint_diff_rad": 0.0,
+ "max_root_pos_diff_m": 0.0,
+ "max_paper_pos_diff_m": 0.0
+}

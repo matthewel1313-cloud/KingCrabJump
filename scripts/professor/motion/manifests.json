@@ -1,0 +1,125 @@
+{
+  "schema": "kk-deploy-manifests/1",
+  "_source": "King Crab Grades Your Midterm. Build from the jumper checkout: python scripts/deploy.py --manifests <this file> --manifest king_crab_grader --allow-incomplete. Every policy is a shipped export of KingKongRobotics/jumper (tasks/<task>/out/example); nothing here is trained.",
+  "bundles": {
+    "king_crab_grader": {
+      "description": "King Crab the professor: jumper.posture walks (the crab-walk sideways and the body's pitch and twist, used for the head shake), jumper.five_foot carries the right claw that picks up and reads a midterm (RB, or B), and jumper.dance is the victory dance for an A+ (Menu + up, or Ctrl + 1). Menu (Ctrl) let go on its own leaves the dance.",
+      "fsm": "king_crab_grader.controller.toml",
+      "leave": [
+        {
+          "name": "leave_motion",
+          "leaves": [
+            "dance_crab"
+          ],
+          "pad": {
+            "button": "menu",
+            "on": "fall",
+            "from": [
+              "dance_crab"
+            ]
+          },
+          "keys": {
+            "key": [
+              "ctrl"
+            ],
+            "on": "fall",
+            "from": [
+              "dance_crab"
+            ]
+          }
+        }
+      ],
+      "modes": {
+        "locomotion": {
+          "task": "jumper.posture",
+          "_note": "Walking (left stick; crab-walk is the stick's x) and the body's posture (right stick: pitch, and twist for the slow head shake). Reached by the cascade's `always` rule.",
+          "policy": "tasks/jumper/posture/out/example"
+        },
+        "claw_right": {
+          "task": "jumper.five_foot",
+          "_note": "Five-foot walking with the right front arm carried as the claw (the mirror hook). RT closes the claw as far as it is held; the d-pad holds the arm out at a preset; the right stick's pitch tilts the body up to read.",
+          "policy": "tasks/jumper/five_foot/out/example",
+          "hook": {
+            "side": "right"
+          },
+          "pad": {
+            "button": "RB",
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_b"
+            ],
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          }
+        },
+        "dance_crab": {
+          "task": "jumper.dance",
+          "_note": "The crab dance, as the A+ victory dance. Starts on entry, ends by itself, and the cascade hands back to locomotion.",
+          "policy": "tasks/jumper/dance/out/example",
+          "pad": {
+            "button": "dpad_up",
+            "with": "menu",
+            "on": "toggle",
+            "from": [
+              "locomotion",
+              "claw_right"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_1",
+              "keypad_1"
+            ],
+            "with": "ctrl",
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          }
+        }
+      }
+    },
+    "king_crab_grader_alt_F": {
+      "description": "King Crab Grades Your Midterm, the F cut: jumper.posture walks (the crab-walk sideways and the body's pitch and twist, used for the head shake) and jumper.five_foot carries the right claw that picks up, reads and puts down the midterm (RB, or B). No dance: this cut ends on the F.",
+      "fsm": "king_crab_grader_alt_F.controller.toml",
+      "modes": {
+        "locomotion": {
+          "task": "jumper.posture",
+          "_note": "Walking (left stick; crab-walk is the stick's x) and the body's posture (right stick: pitch, and twist for the slow head shake). Reached by the cascade's `always` rule.",
+          "policy": "tasks/jumper/posture/out/example"
+        },
+        "claw_right": {
+          "task": "jumper.five_foot",
+          "_note": "Five-foot walking with the right front arm carried as the claw (the mirror hook). RT closes the claw as far as it is held; the d-pad holds the arm out at a preset; the right stick's pitch tilts the body up to read.",
+          "policy": "tasks/jumper/five_foot/out/example",
+          "hook": {
+            "side": "right"
+          },
+          "pad": {
+            "button": "RB",
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_b"
+            ],
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

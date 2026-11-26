@@ -1,0 +1,19 @@
+King Crab — Jumper Crab Robot Challenge Entries
+Copyright 2026 matthewel1313-cloud
+
+This project builds on, and redistributes inside its .skin, .map and .app packages, material from:
+
+  KingKongRobotics/jumper        (commit 198686eac0d188815d0943e9fee50de415edc80a)
+  KingKongRobotics/jumper-design (https://github.com/KingKongRobotics/jumper-design)
+  Copyright 2026 KingKong Robotics, licensed under the Apache License, Version 2.0.
+
+  Used unchanged: the Jumper robot model and meshes; the jumper.posture, jumper.jump,
+  jumper.five_foot, jumper.dance, jumper.dance_brazilian and jumper.gesture_paw policy exports;
+  the deployment controller; and the shellflow / mjscene tooling. Their NOTICE files and
+  third-party attributions (including MuJoCo, mjlab and rsl_rl) apply to that material.
+
+Fonts used to draw captions: Inter Display and Noto Color Emoji (SIL Open Font License 1.1),
+DejaVu (Bitstream Vera licence).
+
+Everything else here (skin geometry and paint, maps, textures, scripts, edits, music and sound
+effects) is original work for this project, licensed under the Apache License, Version 2.0.

@@ -1,0 +1,145 @@
+{
+  "schema": "kk-deploy-manifests/1",
+  "_source": "poly-videos: the official `jumper` bundle reduced to the motions in the King Crab volleyball videos.",
+  "bundles": {
+    "king_crab_volleyball": {
+      "description": "King Crab volleyball: jumper.posture walking by default; the jump on A (Space) -- the motion that bumps the ball in the videos; the crab dance on Menu + up (Ctrl + 1) and the Brazilian samba on Menu + down (Ctrl + 2) for the celebration; the paw 'high five' on d-pad left (3); Menu (Ctrl) alone leaves a dance or the gesture. Same controls as the official jumper app for these modes.",
+      "fsm": "king_crab_volleyball.controller.toml",
+      "leave": [
+        {
+          "name": "leave_motion",
+          "leaves": [
+            "dance_crab",
+            "dance_brazilian",
+            "gesture_paw"
+          ],
+          "pad": {
+            "button": "menu",
+            "on": "fall",
+            "from": [
+              "dance_crab",
+              "dance_brazilian",
+              "gesture_paw"
+            ]
+          },
+          "keys": {
+            "key": [
+              "ctrl"
+            ],
+            "on": "fall",
+            "from": [
+              "dance_crab",
+              "dance_brazilian",
+              "gesture_paw"
+            ]
+          }
+        }
+      ],
+      "modes": {
+        "locomotion": {
+          "task": "jumper.posture",
+          "policy": "tasks/jumper/posture/out/example"
+        },
+        "jump": {
+          "task": "jumper.jump",
+          "policy": "tasks/jumper/jump/out/example",
+          "pad": {
+            "button": "A",
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_space"
+            ],
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          }
+        },
+        "dance_crab": {
+          "task": "jumper.dance",
+          "policy": "tasks/jumper/dance/out/example",
+          "pad": {
+            "button": "dpad_up",
+            "with": "menu",
+            "on": "toggle",
+            "from": [
+              "locomotion",
+              "dance_crab",
+              "dance_brazilian",
+              "gesture_paw"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_1",
+              "keypad_1"
+            ],
+            "with": "ctrl",
+            "on": "toggle",
+            "from": [
+              "locomotion",
+              "dance_crab",
+              "dance_brazilian",
+              "gesture_paw"
+            ]
+          }
+        },
+        "dance_brazilian": {
+          "task": "jumper.dance_brazilian",
+          "policy": "tasks/jumper/dance_brazilian/out/example",
+          "pad": {
+            "button": "dpad_down",
+            "with": "menu",
+            "on": "toggle",
+            "from": [
+              "locomotion",
+              "dance_crab",
+              "dance_brazilian",
+              "gesture_paw"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_2",
+              "keypad_2"
+            ],
+            "with": "ctrl",
+            "on": "toggle",
+            "from": [
+              "locomotion",
+              "dance_crab",
+              "dance_brazilian",
+              "gesture_paw"
+            ]
+          }
+        },
+        "gesture_paw": {
+          "task": "jumper.gesture_paw",
+          "policy": "tasks/jumper/gesture_paw/out/example",
+          "pad": {
+            "button": "dpad_left",
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_3",
+              "keypad_3"
+            ],
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
