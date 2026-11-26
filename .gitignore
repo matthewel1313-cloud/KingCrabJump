@@ -1,6 +1,8 @@
 # Large renders. Git can't filter by size, so all video renders and their working folders are
 # ignored (the 50 MB+ final cuts live on YouTube / Instagram / X). The GIFs in media/ are tracked.
 *.mp4
+# ...except the Cart Heist deliverable (15.7 MB)
+!renders/cart_heist.mp4
 *.mov
 *.mkv
 *.wav

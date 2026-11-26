@@ -4,8 +4,8 @@
 
 Custom skins, maps and apps for **Jumper**, KingKong Robotics' open-source 22-joint crab robot,
 made for the **KingKong Robotics Crab Robot Challenge 2026**. King Crab is Jumper in a crown: a
-#1-jersey beach-volleyball star, a tweed-wearing professor, a Thanksgiving table helper and an
-operating-room scrub tech. Everything
+#1-jersey beach-volleyball star, a tweed-wearing professor, a Thanksgiving table helper, an
+operating-room scrub tech and a Black Friday cart thief with a heart of gold. Everything
 was built with the official [jumper](https://github.com/KingKongRobotics/jumper) and
 [jumper-design](https://github.com/KingKongRobotics/jumper-design) toolkits, and every motion is
 one of Jumper's shipped trained policies.
@@ -18,11 +18,13 @@ one of Jumper's shipped trained policies.
 | 📝 | **Professor grades midterm**: King Crab picks up a midterm, reads it, gives it an F, then finds an A+ | [YouTube](https://youtube.com/shorts/Z0_Pp0wQ7TM) · [Instagram](https://www.instagram.com/kingcrabjump/reel/DgMFsOihklK/) |
 | 🦃 | **"What is my purpose?"**: at a Thanksgiving table King Crab only passes butter, then passes rolls, gravy, a phone for grandma and a kid's drawing, and learns its purpose is the table | Links coming soon |
 | 🩺 | **King Crab, Surgical Tech**: King Crab fetches a scalpel, forceps and scissors from a Mayo stand and hands them to a surgeon's gloved hand, faster each time (with a blooper) | Links coming soon |
+| 🛒 | **Cart Heist (Black Friday)**: two shoppers fight over the last deal; King Crab pinches it from under the cart, sets it in a kid's empty basket at the checkout, bows, sambas and salutes | [`renders/cart_heist.mp4`](renders/cart_heist.mp4) · links coming soon |
 
 <p align="center">
 <img src="media/king-crab-grades-midterm.gif" alt="King Crab grades a midterm: F, then A+" width="200">
 <img src="media/king-crab-thanksgiving.gif" alt="King Crab at the Thanksgiving table: what is my purpose? You pass butter." width="200">
 <img src="media/king-crab-surgical-tech.gif" alt="King Crab, Surgical Tech, hands a scalpel to a gloved hand" width="200">
+<img src="media/king-crab-cart-heist.gif" alt="King Crab pinches the 70% off deal from under a shopping cart" width="200">
 </p>
 
 ## What's custom
@@ -45,9 +47,10 @@ one of Jumper's shipped trained policies.
 | `king_crab_classroom.map` | A desk-top classroom: chalkboard, textbooks, mug, lamp, and five free-body midterm papers at claw height. |
 | `king-crab-thanksgiving-table.map` | A Thanksgiving table at robot scale: a walnut table, a runner, place settings, a turkey and candles, plus seven free-body items to pass (butter, rolls, gravy, cranberry, a phone, a folded drawing, a napkin). |
 | `king-crab-operating-room.map` | An operating-room instrument tray: a stainless tray, a blue sterile drape, a Mayo stand, four free-body instruments (scalpel, forceps, scissors, gauze), and a kinematic surgeon's glove. |
+| `black_friday_store.map` | A Black Friday store aisle at full human scale: BLACK FRIDAY banners and posters, shelves, two carts and a checkout lane in warm light. Cart A's bottom rack (6 cm up) holds a free-body 0.15 kg phone box with a 70% OFF tag; two shopper mannequins stand at Cart A and a kid with an empty basket waits at the checkout. Default robot: `king-crab-gold-1`. |
 
 **Apps** (`apps/`. The first three were built by Jumper's `scripts/deploy.py` from the manifests in
-`scripts/`. The last two are Jumper's shipped bundle trimmed to each film's modes, so they keep
+`scripts/`. The last three are Jumper's shipped bundle trimmed to each film's modes, so they keep
 KingKong's own robot-board and NPU builds.)
 
 | File | What it is |
@@ -57,6 +60,7 @@ KingKong's own robot-board and NPU builds.)
 | `king_crab_grader_alt_F.app` | Walk and right claw (RB / B) only: the alternate cut that ends on the F has no dance. |
 | `king-crab-thanksgiving.app` | Walk (default), left claw on LB / V and right claw on RB / B (the five-foot grasp policy; LT / RT close the claw), crab dance on Menu+↑ / Ctrl+1. |
 | `king-crab-surgeon.app` | Walk (default), left claw on LB / V (LT closes it), dream-wings dance on Menu+→ / Ctrl+4. |
+| `cart_heist.app` | Walk (default), left claw on LB / V (LT closes it, d-pad ↑ holds the arm out), bow on ↓ / 2, hello on ↑ / 1, salute on → / 4, Brazilian samba on Menu+↓ / Ctrl+2. |
 
 **Scripts** (`scripts/`)
 
@@ -83,6 +87,12 @@ KingKong's own robot-board and NPU builds.)
   - `sim/harness.py`, `sim/render.py` and `edit/` build, render and edit the film.
   - `package/` builds the validated `.skin` and `.map` (`build_packages.py`) and the trimmed `.app` (`trim_app.py`).
   - `skin/king_crab_surgeon.skin` and `scene/operating_room.map` are the prototype overlay and older-format map the film's renderer loads. The validated packages are the ones in `skins/` and `maps/`.
+- `scripts/cart_heist/`: the Black Friday film's pipeline.
+  - `sequencer.py` is the beat sheet: a closed-loop scripted gamepad driving `cart_heist.app`'s policies, plus the grasp weld and the physical release into the basket.
+  - `scene/author_scene.py` and `tools/build_map.sh` build and check the map; `tools/build_app.py` trims the app.
+  - `sim/`, `render.py` and `edit/` hold the runtime, renderer, overlays and the code-generated soundtrack.
+  - `tools/probe_claw.py` measures the claw's reach; `tools/check_clearance.py` checks the legs never pass through the cart or the basket.
+  - `build_all.sh` rebuilds everything; `NOTES.md` and `CREDITS.md` are that film's own notes.
 
 ## How to run
 
@@ -117,6 +127,7 @@ python scripts/play.py --app ../KingCrabJump/apps/king_crab_grader.app --scene .
 python scripts/play.py --app ../KingCrabJump/apps/king_crab_grader_alt_F.app --scene ../KingCrabJump/maps/king_crab_classroom.map
 python scripts/play.py --app ../KingCrabJump/apps/king-crab-thanksgiving.app --scene ../KingCrabJump/maps/king-crab-thanksgiving-table.map
 python scripts/play.py --app ../KingCrabJump/apps/king-crab-surgeon.app --scene ../KingCrabJump/maps/king-crab-operating-room.map
+python scripts/play.py --app ../KingCrabJump/apps/cart_heist.app --scene ../KingCrabJump/maps/black_friday_store.map
 ```
 
 The robot starts walking. Use the keys from the apps table: Space jumps, Ctrl+1 dances, and so on.
@@ -139,6 +150,8 @@ python scripts/shellflow.py verify-package ../KingCrabJump/maps/king-crab-thanks
 python scripts/shellflow.py verify-package ../KingCrabJump/maps/king-crab-operating-room.map --profile robots/jumper/profile.json --capability rigid --capability jumper --mujoco
 python examples/load_skin_map.py --skin ../KingCrabJump/skins/king-crab-thanksgiving.skin --map ../KingCrabJump/maps/king-crab-thanksgiving-table.map --profile robots/jumper/profile.json --output thanksgiving.json
 python examples/load_skin_map.py --skin ../KingCrabJump/skins/king-crab-surgeon.skin --map ../KingCrabJump/maps/king-crab-operating-room.map --profile robots/jumper/profile.json --output surgeon.json
+python scripts/shellflow.py verify-package ../KingCrabJump/maps/black_friday_store.map --profile robots/jumper/profile.json --capability rigid --capability jumper --mujoco
+python examples/load_skin_map.py --skin ../KingCrabJump/skins/king-crab-gold-1.skin --map ../KingCrabJump/maps/black_friday_store.map --profile robots/jumper/profile.json --output cart_heist.json
 ```
 
 **4. Render the volleyball video** (Train env)
@@ -186,6 +199,16 @@ python sim/render.py preview main         # optional low-res 3-camera check
 `scripts/surgeon/NOTES.md` has the full render and edit steps. The Thanksgiving film rebuilds with
 `JUMPER=… DESIGN=… scripts/thanksgiving/build_all.sh`; see `scripts/thanksgiving/NOTES.md`.
 
+**7. Rebuild Cart Heist (Black Friday)** (both envs; the script switches between them)
+
+```bash
+JUMPER=$PWD/jumper DESIGN=$PWD/jumper-design KingCrabJump/scripts/cart_heist/build_all.sh
+```
+
+It rebuilds the map and the app (with their checks), dumps the training robot model, simulates
+the 58 s story with the shipped policies, checks clearances, renders 840 frames and writes
+`renders/cart_heist.mp4`. `scripts/cart_heist/NOTES.md` has the measurements and the shot list.
+
 What was actually tested before publishing:
 - Every command in steps 2 and 3, as written.
 - Step 4 from a clean capture folder, with `--preview`.
@@ -195,6 +218,9 @@ What was actually tested before publishing:
   every joint over 1,201 steps.
 - Not re-run here: the Thanksgiving film's `build_all.sh`, and the Surgical Tech film's full render
   and edit. Both are documented in their own NOTES.
+- Cart Heist: every step of step 7, run piece by piece, produced the published video.
+  The film simulated with the trimmed `cart_heist.app` and with Jumper's full example app gave a 0.0
+  difference in every joint over 11,679 control ticks.
 
 ## Policy vs. scripted: what's real
 
@@ -206,12 +232,15 @@ What was actually tested before publishing:
 | Paw high-five | **Trained policy**: `jumper.gesture_paw` |
 | Reaching for, pinching, lifting and placing the midterm; fetching, carrying and offering the Thanksgiving items and the surgical instruments | **Trained policy**: `jumper.five_foot` (the claw grasp policy: walks on five legs, carries the sixth as a claw, the trigger closes it) |
 | Dream-wings dance (Surgical Tech finish) | **Trained policy**: `jumper.dance_dream_wings` |
+| The bow and the salute (Cart Heist) | **Trained policies**: `jumper.gesture_bow`, `jumper.gesture_salute` |
 | When each motion happens | **Scripted**: a timeline presses the app's own buttons (`run_sequence.py`) or picks clips (`videos.py`) |
 | The professor's "no" head-shake | **Scripted input to a policy**: `jumper.posture`'s body twist driven by a slow sine (there is no shipped head-shake gesture) |
 | Holding the midterm in the claw (8.0–15.95 s) | **Welded**: a kinematic attach. The claw really reaches, slides under and closes on the sheet, but contact alone couldn't hold a 2 mm sheet (`motion/experiments/physics_grip.py`), so the paper is pinned to the palm while held, then released to fall under physics. |
 | Holding the Thanksgiving items and the instruments | **Welded**: when the policy has closed the claw at the item, a weld attaches it (no snap at the Thanksgiving table, a ~3 cm slide into the jaws for the instruments) and keeps it level. The Surgical Tech blooper shows the same grab with friction only: the scalpel gets shoved along the tray instead of lifted. |
+| Holding the Black Friday deal box | **Welded while held**: the claw policy reaches, the trigger shuts the jaw 3.9 mm from the box's edge, and a weld attaches it. Over the basket the trigger opens, the weld comes off, and the box drops 58 mm into the basket under physics. |
 | The family's hands and the surgeon's glove | **Scripted**: kinematic bodies on eased paths. Hand-offs move the weld from the claw to the hand. |
-| Driving the Thanksgiving and Surgical Tech robots | **Scripted operator**: a closed-loop virtual gamepad that pushes the sticks toward the next target from the measured claw position, as a person would |
+| The Black Friday shoppers and the kid | **Scripted**: static mannequins made kinematic for a light sway, head bobs and the "wait…" turn |
+| Driving the Thanksgiving, Surgical Tech and Cart Heist robots | **Scripted operator**: a closed-loop virtual gamepad that pushes the sticks toward the next target from the measured claw position, as a person would |
 | The volleyball, volleyball video | **Animated**: a scripted prop timed to the real jump |
 | The volleyball, real-physics cut | **Simulated physics**: a MuJoCo free body, hit by the unmodified jump policy. The toss was found by `ball_sweep.py`; three repeat attempts land within 2 cm. |
 | Cameras, slow motion, captions, pen marks and grades, sparkles, impact streaks, the Thanksgiving robot's eyes | **Post / render**: drawn after the simulation |
@@ -232,9 +261,9 @@ trained from scratch.
 ## Status and caveats
 
 Everything here has been tested in simulation only; nothing has run on a physical Jumper. All
-five apps replay their reference recordings exactly (`deploy.py --check-reference`) and run in
+six apps replay their reference recordings exactly (`deploy.py --check-reference`) and run in
 `play --app`.
-- `king-crab-thanksgiving.app` and `king-crab-surgeon.app` keep KingKong's own robot-board
+- `king-crab-thanksgiving.app`, `king-crab-surgeon.app` and `cart_heist.app` keep KingKong's own robot-board
   controller and `.rknn` NPU models, plus the macOS and Windows `play` runtimes. Those are
   unmodified from the shipped bundle, but untested on hardware here.
 - The other three apps were built with `--allow-incomplete`: browser and Linux `play` only, with

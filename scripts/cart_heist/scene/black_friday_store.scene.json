@@ -1,0 +1,9519 @@
+{
+ "name": "black_friday_store",
+ "title": "Black Friday Store Aisle",
+ "description": "A store aisle on Black Friday, at full human scale: gondola shelves with BLACK FRIDAY header signs, hanging banners, warm ceiling light, two shopping carts and a checkout lane. Cart A's low bottom rack (top 6 cm off the floor) holds one free rigid deal box (a 14 x 8 x 3.2 cm phone box with a 70% OFF tag, 0.15 kg) where Jumper's claw can reach it. Two adult shopper figures stand at either end of Cart A, and a small shopper stands at the checkout with an empty basket on the floor. The figures are static bodies a host may animate kinematically. Robot spawn is on the floor behind Cart A.",
+ "tags": [
+  "indoor",
+  "store",
+  "black-friday",
+  "grasp",
+  "pick-and-place"
+ ],
+ "physics": {
+  "timestep": 0.001,
+  "integrator": "implicitfast",
+  "cone": "pyramidal",
+  "iterations": 10
+ },
+ "sky": {
+  "preset": "indoor",
+  "top": [
+   0.2,
+   0.14,
+   0.1
+  ],
+  "bottom": [
+   0.3,
+   0.2,
+   0.14
+  ]
+ },
+ "lighting": {
+  "headlight": false,
+  "shadows": true,
+  "shadow_quality": "high",
+  "ambient": [
+   0.22,
+   0.19,
+   0.16
+  ],
+  "lights": [
+   {
+    "name": "key_cart",
+    "type": "spot",
+    "pos": [
+     -0.6,
+     1.2,
+     2.9
+    ],
+    "target": [
+     0.0,
+     -0.1,
+     0.0
+    ],
+    "diffuse": [
+     0.85,
+     0.72,
+     0.55
+    ],
+    "specular": [
+     0.3,
+     0.25,
+     0.2
+    ],
+    "cutoff": 48,
+    "exponent": 2,
+    "castshadow": true
+   },
+   {
+    "name": "key_checkout",
+    "type": "spot",
+    "pos": [
+     -1.6,
+     -0.6,
+     2.9
+    ],
+    "target": [
+     -1.95,
+     0.3,
+     0.0
+    ],
+    "diffuse": [
+     0.8,
+     0.68,
+     0.5
+    ],
+    "specular": [
+     0.3,
+     0.25,
+     0.2
+    ],
+    "cutoff": 45,
+    "exponent": 2,
+    "castshadow": true
+   },
+   {
+    "name": "aisle_fill_a",
+    "type": "spot",
+    "pos": [
+     -2.4,
+     0.0,
+     3.0
+    ],
+    "target": [
+     -1.6,
+     0.0,
+     0.0
+    ],
+    "diffuse": [
+     0.4,
+     0.34,
+     0.27
+    ],
+    "specular": [
+     0.1,
+     0.1,
+     0.1
+    ],
+    "cutoff": 70,
+    "exponent": 1,
+    "castshadow": false
+   },
+   {
+    "name": "aisle_fill_b",
+    "type": "spot",
+    "pos": [
+     3.0,
+     0.0,
+     3.0
+    ],
+    "target": [
+     3.0,
+     0.0,
+     0.0
+    ],
+    "diffuse": [
+     0.4,
+     0.34,
+     0.27
+    ],
+    "specular": [
+     0.1,
+     0.1,
+     0.1
+    ],
+    "cutoff": 70,
+    "exponent": 1,
+    "castshadow": false
+   },
+   {
+    "name": "warm_bounce",
+    "type": "directional",
+    "pos": [
+     0,
+     0,
+     3
+    ],
+    "dir": [
+     0.3,
+     0.4,
+     -1.0
+    ],
+    "diffuse": [
+     0.22,
+     0.18,
+     0.14
+    ],
+    "specular": [
+     0.05,
+     0.05,
+     0.05
+    ],
+    "castshadow": false
+   }
+  ]
+ },
+ "ground": {
+  "type": "plane",
+  "size": [
+   4.6,
+   2.6
+  ],
+  "material": "floor_tile",
+  "friction": "polished_floor"
+ },
+ "materials": [
+  {
+   "name": "floor_tile",
+   "texture": {
+    "file": "textures/floor.png"
+   },
+   "texrepeat": [
+    1.2,
+    1.2
+   ],
+   "texuniform": true,
+   "shininess": 0.7,
+   "specular": 0.35,
+   "reflectance": 0.12
+  },
+  {
+   "name": "banner_bf",
+   "texture": {
+    "file": "textures/banner_bf.png"
+   },
+   "emission": 0.35,
+   "specular": 0.05
+  },
+  {
+   "name": "banner_deals",
+   "texture": {
+    "file": "textures/banner_deals.png"
+   },
+   "emission": 0.35,
+   "specular": 0.05
+  },
+  {
+   "name": "header_bf",
+   "texture": {
+    "file": "textures/header_bf.png"
+   },
+   "emission": 0.4,
+   "specular": 0.05
+  },
+  {
+   "name": "tag70",
+   "texture": {
+    "file": "textures/tag70.png"
+   },
+   "emission": 0.25,
+   "specular": 0.1
+  },
+  {
+   "name": "phone_box",
+   "texture": {
+    "file": "textures/phone_box.png"
+   },
+   "shininess": 0.8,
+   "specular": 0.5
+  },
+  {
+   "name": "products0",
+   "texture": {
+    "file": "textures/products0.png"
+   },
+   "texrepeat": [
+    3,
+    1
+   ],
+   "specular": 0.15
+  },
+  {
+   "name": "products1",
+   "texture": {
+    "file": "textures/products1.png"
+   },
+   "texrepeat": [
+    3,
+    1
+   ],
+   "specular": 0.15
+  },
+  {
+   "name": "products2",
+   "texture": {
+    "file": "textures/products2.png"
+   },
+   "texrepeat": [
+    3,
+    1
+   ],
+   "specular": 0.15
+  },
+  {
+   "name": "price_strip",
+   "texture": {
+    "file": "textures/price_strip.png"
+   },
+   "texrepeat": [
+    3,
+    1
+   ],
+   "emission": 0.1
+  },
+  {
+   "name": "checkout_sign",
+   "texture": {
+    "file": "textures/checkout.png"
+   },
+   "emission": 0.8
+  },
+  {
+   "name": "back_wall",
+   "texture": {
+    "file": "textures/wall.png"
+   },
+   "emission": 0.3,
+   "specular": 0.0
+  },
+  {
+   "name": "side_wall",
+   "rgba": [
+    0.86,
+    0.8,
+    0.7,
+    1
+   ],
+   "specular": 0.0
+  },
+  {
+   "name": "ceiling_panel",
+   "texture": {
+    "file": "textures/panel.png"
+   },
+   "emission": 1.0
+  },
+  {
+   "name": "chrome",
+   "rgba": [
+    0.8,
+    0.81,
+    0.84,
+    1
+   ],
+   "shininess": 0.95,
+   "specular": 0.9,
+   "reflectance": 0.1
+  },
+  {
+   "name": "cart_red",
+   "rgba": [
+    0.86,
+    0.1,
+    0.12,
+    1
+   ],
+   "shininess": 0.7,
+   "specular": 0.5
+  },
+  {
+   "name": "rack_grey",
+   "rgba": [
+    0.55,
+    0.56,
+    0.58,
+    1
+   ],
+   "shininess": 0.6,
+   "specular": 0.4
+  },
+  {
+   "name": "rubber_black",
+   "rgba": [
+    0.08,
+    0.08,
+    0.09,
+    1
+   ],
+   "shininess": 0.2,
+   "specular": 0.1
+  },
+  {
+   "name": "shelf_metal",
+   "rgba": [
+    0.86,
+    0.86,
+    0.84,
+    1
+   ],
+   "shininess": 0.4,
+   "specular": 0.3
+  },
+  {
+   "name": "ceiling",
+   "rgba": [
+    0.7,
+    0.66,
+    0.6,
+    1
+   ],
+   "specular": 0.0
+  },
+  {
+   "name": "coat_red",
+   "rgba": [
+    0.74,
+    0.08,
+    0.12,
+    1
+   ],
+   "shininess": 0.3,
+   "specular": 0.2
+  },
+  {
+   "name": "coat_green",
+   "rgba": [
+    0.1,
+    0.4,
+    0.3,
+    1
+   ],
+   "shininess": 0.6,
+   "specular": 0.4
+  },
+  {
+   "name": "coat_teal",
+   "rgba": [
+    0.05,
+    0.55,
+    0.62,
+    1
+   ],
+   "shininess": 0.2,
+   "specular": 0.1
+  },
+  {
+   "name": "shoe",
+   "rgba": [
+    0.1,
+    0.09,
+    0.09,
+    1
+   ],
+   "shininess": 0.6,
+   "specular": 0.4
+  },
+  {
+   "name": "bag_yellow",
+   "rgba": [
+    0.98,
+    0.8,
+    0.1,
+    1
+   ],
+   "shininess": 0.5,
+   "specular": 0.3
+  },
+  {
+   "name": "basket_red",
+   "rgba": [
+    0.88,
+    0.14,
+    0.16,
+    1
+   ],
+   "shininess": 0.6,
+   "specular": 0.4
+  },
+  {
+   "name": "counter",
+   "rgba": [
+    0.24,
+    0.22,
+    0.24,
+    1
+   ],
+   "shininess": 0.5,
+   "specular": 0.3
+  },
+  {
+   "name": "belt",
+   "rgba": [
+    0.05,
+    0.05,
+    0.06,
+    1
+   ],
+   "shininess": 0.3,
+   "specular": 0.2
+  },
+  {
+   "name": "steel",
+   "rgba": [
+    0.7,
+    0.71,
+    0.74,
+    1
+   ],
+   "shininess": 0.8,
+   "specular": 0.7
+  },
+  {
+   "name": "screen",
+   "rgba": [
+    0.3,
+    0.75,
+    0.95,
+    1
+   ],
+   "emission": 0.8
+  }
+ ],
+ "objects": [
+  {
+   "name": "wall_far",
+   "shape": "box",
+   "size": [
+    0.05,
+    2.4,
+    1.6
+   ],
+   "pos": [
+    4.4,
+    0,
+    1.6
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "side_wall"
+  },
+  {
+   "name": "wall_near",
+   "shape": "box",
+   "size": [
+    0.05,
+    2.4,
+    1.6
+   ],
+   "pos": [
+    -3.9,
+    0,
+    1.6
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "side_wall"
+  },
+  {
+   "name": "poster_far",
+   "shape": "box",
+   "size": [
+    2.3,
+    1.15,
+    0.004
+   ],
+   "pos": [
+    4.34,
+    0,
+    1.75
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    -0.5,
+    -0.5
+   ],
+   "material": "back_wall"
+  },
+  {
+   "name": "poster_near",
+   "shape": "box",
+   "size": [
+    2.3,
+    1.15,
+    0.004
+   ],
+   "pos": [
+    -3.84,
+    0,
+    1.75
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "material": "back_wall"
+  },
+  {
+   "name": "wall_l",
+   "shape": "box",
+   "size": [
+    4.2,
+    0.05,
+    1.6
+   ],
+   "pos": [
+    0.25,
+    2.3,
+    1.6
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "side_wall"
+  },
+  {
+   "name": "wall_r",
+   "shape": "box",
+   "size": [
+    4.2,
+    0.05,
+    1.6
+   ],
+   "pos": [
+    0.25,
+    -2.3,
+    1.6
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "side_wall"
+  },
+  {
+   "name": "ceiling",
+   "shape": "box",
+   "size": [
+    4.2,
+    2.4,
+    0.02
+   ],
+   "pos": [
+    0.25,
+    0,
+    3.22
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling"
+  },
+  {
+   "name": "light_panel_0_0",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    -3.0,
+    -0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_0_1",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    -3.0,
+    0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_1_0",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    -1.6,
+    -0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_1_1",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    -1.6,
+    0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_2_0",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    -0.20000000000000018,
+    -0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_2_1",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    -0.20000000000000018,
+    0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_3_0",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    1.1999999999999993,
+    -0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_3_1",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    1.1999999999999993,
+    0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_4_0",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    2.5999999999999996,
+    -0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_4_1",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    2.5999999999999996,
+    0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_5_0",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    4.0,
+    -0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "light_panel_5_1",
+   "shape": "box",
+   "size": [
+    0.55,
+    0.16,
+    0.01
+   ],
+   "pos": [
+    4.0,
+    0.9,
+    3.19
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "ceiling_panel"
+  },
+  {
+   "name": "banner0_a",
+   "shape": "box",
+   "size": [
+    1.1,
+    0.28,
+    0.004
+   ],
+   "pos": [
+    -1.695,
+    0,
+    2.55
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "material": "banner_bf"
+  },
+  {
+   "name": "banner0_b",
+   "shape": "box",
+   "size": [
+    1.1,
+    0.28,
+    0.004
+   ],
+   "pos": [
+    -1.7049999999999998,
+    0,
+    2.55
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    -0.5,
+    -0.5
+   ],
+   "material": "banner_bf"
+  },
+  {
+   "name": "banner0_wire-1",
+   "shape": "capsule",
+   "size": [
+    0.003
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "collision": false,
+   "fromto": [
+    -1.7,
+    -1.0,
+    2.83,
+    -1.7,
+    -1.0,
+    3.2
+   ],
+   "material": "steel"
+  },
+  {
+   "name": "banner0_wire1",
+   "shape": "capsule",
+   "size": [
+    0.003
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "collision": false,
+   "fromto": [
+    -1.7,
+    1.0,
+    2.83,
+    -1.7,
+    1.0,
+    3.2
+   ],
+   "material": "steel"
+  },
+  {
+   "name": "banner1_a",
+   "shape": "box",
+   "size": [
+    1.1,
+    0.28,
+    0.004
+   ],
+   "pos": [
+    1.005,
+    0,
+    2.55
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "material": "banner_deals"
+  },
+  {
+   "name": "banner1_b",
+   "shape": "box",
+   "size": [
+    1.1,
+    0.28,
+    0.004
+   ],
+   "pos": [
+    0.995,
+    0,
+    2.55
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    -0.5,
+    -0.5
+   ],
+   "material": "banner_deals"
+  },
+  {
+   "name": "banner1_wire-1",
+   "shape": "capsule",
+   "size": [
+    0.003
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "collision": false,
+   "fromto": [
+    1.0,
+    -1.0,
+    2.83,
+    1.0,
+    -1.0,
+    3.2
+   ],
+   "material": "steel"
+  },
+  {
+   "name": "banner1_wire1",
+   "shape": "capsule",
+   "size": [
+    0.003
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "collision": false,
+   "fromto": [
+    1.0,
+    1.0,
+    2.83,
+    1.0,
+    1.0,
+    3.2
+   ],
+   "material": "steel"
+  },
+  {
+   "name": "banner2_a",
+   "shape": "box",
+   "size": [
+    1.1,
+    0.28,
+    0.004
+   ],
+   "pos": [
+    3.205,
+    0,
+    2.55
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "material": "banner_bf"
+  },
+  {
+   "name": "banner2_b",
+   "shape": "box",
+   "size": [
+    1.1,
+    0.28,
+    0.004
+   ],
+   "pos": [
+    3.1950000000000003,
+    0,
+    2.55
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    -0.5,
+    -0.5
+   ],
+   "material": "banner_bf"
+  },
+  {
+   "name": "banner2_wire-1",
+   "shape": "capsule",
+   "size": [
+    0.003
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "collision": false,
+   "fromto": [
+    3.2,
+    -1.0,
+    2.83,
+    3.2,
+    -1.0,
+    3.2
+   ],
+   "material": "steel"
+  },
+  {
+   "name": "banner2_wire1",
+   "shape": "capsule",
+   "size": [
+    0.003
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "collision": false,
+   "fromto": [
+    3.2,
+    1.0,
+    2.83,
+    3.2,
+    1.0,
+    3.2
+   ],
+   "material": "steel"
+  },
+  {
+   "name": "shelf_l",
+   "shape": "none",
+   "pos": [
+    1.2000000000000002,
+    1.75,
+    0
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "shelf_l_back",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.02,
+      0.95
+     ],
+     "pos": [
+      0,
+      0.225,
+      0.95
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_l_base",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.06
+     ],
+     "pos": [
+      0,
+      0,
+      0.06
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_l_prod0",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.1,
+      0.29000000000000004
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "products0"
+    },
+    {
+     "name": "shelf_l_shelf0",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.12
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_l_strip0",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.225,
+      0.12
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_l_prod1",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.1,
+      0.6900000000000001
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "products1"
+    },
+    {
+     "name": "shelf_l_shelf1",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.52
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_l_strip1",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.225,
+      0.52
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_l_prod2",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.1,
+      1.09
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "products2"
+    },
+    {
+     "name": "shelf_l_shelf2",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.92
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_l_strip2",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.225,
+      0.92
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_l_prod3",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.1,
+      1.49
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "products0"
+    },
+    {
+     "name": "shelf_l_shelf3",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      1.32
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_l_strip3",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.225,
+      1.32
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_l_header_board",
+     "shape": "box",
+     "size": [
+      2.16,
+      0.012,
+      0.18
+     ],
+     "pos": [
+      0,
+      0,
+      2.08
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_l_header",
+     "shape": "box",
+     "size": [
+      2.1500000000000004,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.016,
+      2.08
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.707107,
+      0.707107,
+      0.0,
+      0.0
+     ],
+     "material": "header_bf"
+    }
+   ],
+   "tags": [
+    "shelf"
+   ]
+  },
+  {
+   "name": "shelf_r",
+   "shape": "none",
+   "pos": [
+    1.2000000000000002,
+    -1.75,
+    0
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "shelf_r_back",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.02,
+      0.95
+     ],
+     "pos": [
+      0,
+      -0.225,
+      0.95
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r_base",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.06
+     ],
+     "pos": [
+      0,
+      0,
+      0.06
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r_prod0",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.1,
+      0.29000000000000004
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "products1"
+    },
+    {
+     "name": "shelf_r_shelf0",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.12
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r_strip0",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.225,
+      0.12
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_r_prod1",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.1,
+      0.6900000000000001
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "products2"
+    },
+    {
+     "name": "shelf_r_shelf1",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.52
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r_strip1",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.225,
+      0.52
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_r_prod2",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.1,
+      1.09
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "products0"
+    },
+    {
+     "name": "shelf_r_shelf2",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.92
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r_strip2",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.225,
+      0.92
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_r_prod3",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.1,
+      1.49
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "products1"
+    },
+    {
+     "name": "shelf_r_shelf3",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      1.32
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r_strip3",
+     "shape": "box",
+     "size": [
+      2.4,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.225,
+      1.32
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_r_header_board",
+     "shape": "box",
+     "size": [
+      2.16,
+      0.012,
+      0.18
+     ],
+     "pos": [
+      0,
+      0,
+      2.08
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r_header",
+     "shape": "box",
+     "size": [
+      2.1500000000000004,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.016,
+      2.08
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "header_bf"
+    }
+   ],
+   "tags": [
+    "shelf"
+   ]
+  },
+  {
+   "name": "shelf_r2",
+   "shape": "none",
+   "pos": [
+    -3.0999999999999996,
+    -1.75,
+    0
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "shelf_r2_back",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.02,
+      0.95
+     ],
+     "pos": [
+      0,
+      -0.225,
+      0.95
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r2_base",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.225,
+      0.06
+     ],
+     "pos": [
+      0,
+      0,
+      0.06
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r2_prod0",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.1,
+      0.29000000000000004
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "products2"
+    },
+    {
+     "name": "shelf_r2_shelf0",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.12
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r2_strip0",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.225,
+      0.12
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_r2_prod1",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.1,
+      0.6900000000000001
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "products0"
+    },
+    {
+     "name": "shelf_r2_shelf1",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.52
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r2_strip1",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.225,
+      0.52
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_r2_prod2",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.1,
+      1.09
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "products1"
+    },
+    {
+     "name": "shelf_r2_shelf2",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.92
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r2_strip2",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.225,
+      0.92
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_r2_prod3",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      -0.1,
+      1.49
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "products2"
+    },
+    {
+     "name": "shelf_r2_shelf3",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.225,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      1.32
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r2_strip3",
+     "shape": "box",
+     "size": [
+      0.7,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.225,
+      1.32
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "price_strip"
+    },
+    {
+     "name": "shelf_r2_header_board",
+     "shape": "box",
+     "size": [
+      0.63,
+      0.012,
+      0.18
+     ],
+     "pos": [
+      0,
+      0,
+      2.08
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shelf_metal"
+    },
+    {
+     "name": "shelf_r2_header",
+     "shape": "box",
+     "size": [
+      0.62,
+      0.17,
+      0.004
+     ],
+     "pos": [
+      0,
+      0.016,
+      2.08
+     ],
+     "kind": "static",
+     "collision": false,
+     "quat": [
+      0.0,
+      0.0,
+      0.707107,
+      0.707107
+     ],
+     "material": "header_bf"
+    }
+   ],
+   "tags": [
+    "shelf"
+   ]
+  },
+  {
+   "name": "endcap_box0",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.0,
+    -1.1,
+    0.1
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_box1",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.33,
+    -1.1,
+    0.1
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_box2",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.66,
+    -1.1,
+    0.1
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_box3",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.0,
+    -1.1,
+    0.305
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_box4",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.33,
+    -1.1,
+    0.305
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_box5",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.66,
+    -1.1,
+    0.305
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_box6",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.0,
+    -1.1,
+    0.51
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_box7",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.33,
+    -1.1,
+    0.51
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_box8",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.12,
+    0.1
+   ],
+   "pos": [
+    2.66,
+    -1.1,
+    0.51
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "phone_box"
+  },
+  {
+   "name": "endcap_sign",
+   "shape": "box",
+   "size": [
+    0.28,
+    0.28,
+    0.004
+   ],
+   "pos": [
+    1.85,
+    -1.06,
+    0.98
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    -0.107723,
+    -0.107723,
+    0.698853,
+    0.698853
+   ],
+   "material": "tag70"
+  },
+  {
+   "name": "cart_a",
+   "shape": "none",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "euler": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "cart_a_wheel0",
+     "shape": "cylinder",
+     "size": [
+      0.04,
+      0.012
+     ],
+     "pos": [
+      0.33,
+      0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "rubber_black"
+    },
+    {
+     "name": "cart_a_hub0",
+     "shape": "cylinder",
+     "size": [
+      0.016,
+      0.014
+     ],
+     "pos": [
+      0.33,
+      0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fork0",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.33,
+      0.2,
+      0.04,
+      0.33,
+      0.2,
+      0.055999999999999994
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_wheel1",
+     "shape": "cylinder",
+     "size": [
+      0.04,
+      0.012
+     ],
+     "pos": [
+      0.33,
+      -0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "rubber_black"
+    },
+    {
+     "name": "cart_a_hub1",
+     "shape": "cylinder",
+     "size": [
+      0.016,
+      0.014
+     ],
+     "pos": [
+      0.33,
+      -0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fork1",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.33,
+      -0.2,
+      0.04,
+      0.33,
+      -0.2,
+      0.055999999999999994
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_wheel2",
+     "shape": "cylinder",
+     "size": [
+      0.04,
+      0.012
+     ],
+     "pos": [
+      -0.33,
+      0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "rubber_black"
+    },
+    {
+     "name": "cart_a_hub2",
+     "shape": "cylinder",
+     "size": [
+      0.016,
+      0.014
+     ],
+     "pos": [
+      -0.33,
+      0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fork2",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.33,
+      0.2,
+      0.04,
+      -0.33,
+      0.2,
+      0.055999999999999994
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_wheel3",
+     "shape": "cylinder",
+     "size": [
+      0.04,
+      0.012
+     ],
+     "pos": [
+      -0.33,
+      -0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "rubber_black"
+    },
+    {
+     "name": "cart_a_hub3",
+     "shape": "cylinder",
+     "size": [
+      0.016,
+      0.014
+     ],
+     "pos": [
+      -0.33,
+      -0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fork3",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.33,
+      -0.2,
+      0.04,
+      -0.33,
+      -0.2,
+      0.055999999999999994
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rack",
+     "shape": "box",
+     "size": [
+      0.37,
+      0.215,
+      0.003
+     ],
+     "pos": [
+      0,
+      0,
+      0.056999999999999995
+     ],
+     "kind": "static",
+     "collision": true,
+     "material": "rack_grey",
+     "contype": 2048,
+     "conaffinity": 2048,
+     "friction": [
+      0.9,
+      0.005,
+      0.0001
+     ]
+    },
+    {
+     "name": "cart_a_rw0",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.33636363636363636,
+      -0.215,
+      0.061,
+      -0.33636363636363636,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw1",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.2690909090909091,
+      -0.215,
+      0.061,
+      -0.2690909090909091,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw2",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.20181818181818179,
+      -0.215,
+      0.061,
+      -0.20181818181818179,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw3",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.13454545454545455,
+      -0.215,
+      0.061,
+      -0.13454545454545455,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw4",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.06727272727272728,
+      -0.215,
+      0.061,
+      -0.06727272727272728,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw5",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.0,
+      -0.215,
+      0.061,
+      0.0,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw6",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.06727272727272728,
+      -0.215,
+      0.061,
+      0.06727272727272728,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw7",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.13454545454545455,
+      -0.215,
+      0.061,
+      0.13454545454545455,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw8",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.20181818181818179,
+      -0.215,
+      0.061,
+      0.20181818181818179,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw9",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.2690909090909091,
+      -0.215,
+      0.061,
+      0.2690909090909091,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rw10",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.33636363636363636,
+      -0.215,
+      0.061,
+      0.33636363636363636,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rl-1",
+     "shape": "capsule",
+     "size": [
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.37,
+      -0.215,
+      0.064,
+      0.37,
+      -0.215,
+      0.064
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rl1",
+     "shape": "capsule",
+     "size": [
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.37,
+      0.215,
+      0.064,
+      0.37,
+      0.215,
+      0.064
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_re-1",
+     "shape": "capsule",
+     "size": [
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.37,
+      -0.215,
+      0.064,
+      -0.37,
+      0.215,
+      0.064
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_re1",
+     "shape": "capsule",
+     "size": [
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.37,
+      -0.215,
+      0.064,
+      0.37,
+      0.215,
+      0.064
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_post_r-1",
+     "shape": "capsule",
+     "size": [
+      0.011
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.205,
+      0.06,
+      -0.46,
+      -0.25,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_post_f-1",
+     "shape": "capsule",
+     "size": [
+      0.01
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.205,
+      0.06,
+      0.3,
+      -0.2,
+      0.58
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_brace-1",
+     "shape": "capsule",
+     "size": [
+      0.009
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.205,
+      0.06999999999999999,
+      0.36,
+      -0.205,
+      0.06999999999999999
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_post_r1",
+     "shape": "capsule",
+     "size": [
+      0.011
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.205,
+      0.06,
+      -0.46,
+      0.25,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_post_f1",
+     "shape": "capsule",
+     "size": [
+      0.01
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.205,
+      0.06,
+      0.3,
+      0.2,
+      0.58
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_brace1",
+     "shape": "capsule",
+     "size": [
+      0.009
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.205,
+      0.06999999999999999,
+      0.36,
+      0.205,
+      0.06999999999999999
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      -0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.22,
+      0.56,
+      -0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.3,
+      -0.22,
+      0.56,
+      -0.3666666666666667,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.3,
+      0.22,
+      0.56,
+      -0.3666666666666667,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.24,
+      -0.22,
+      0.56,
+      -0.29333333333333333,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.24,
+      0.22,
+      0.56,
+      -0.29333333333333333,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.18,
+      -0.22,
+      0.56,
+      -0.22,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.18,
+      0.22,
+      0.56,
+      -0.22,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.12,
+      -0.22,
+      0.56,
+      -0.14666666666666667,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.12,
+      0.22,
+      0.56,
+      -0.14666666666666667,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.06,
+      -0.22,
+      0.56,
+      -0.0733333333333333,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.06,
+      0.22,
+      0.56,
+      -0.0733333333333333,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.0,
+      -0.22,
+      0.56,
+      0.0,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.0,
+      0.22,
+      0.56,
+      0.0,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_7",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.06,
+      -0.22,
+      0.56,
+      0.07333333333333342,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_7",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.06,
+      0.22,
+      0.56,
+      0.07333333333333342,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_8",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.12,
+      -0.22,
+      0.56,
+      0.14666666666666667,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_8",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.12,
+      0.22,
+      0.56,
+      0.14666666666666667,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_9",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.18000000000000005,
+      -0.22,
+      0.56,
+      0.22000000000000003,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_9",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.18000000000000005,
+      0.22,
+      0.56,
+      0.22000000000000003,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_10",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.24,
+      -0.22,
+      0.56,
+      0.2933333333333334,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_10",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.24,
+      0.22,
+      0.56,
+      0.2933333333333334,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_11",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.29999999999999993,
+      -0.22,
+      0.56,
+      0.36666666666666664,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_11",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.29999999999999993,
+      0.22,
+      0.56,
+      0.36666666666666664,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw-1_12",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.22,
+      0.56,
+      0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sw1_12",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.22,
+      0.56,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh-1_0",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      0.36,
+      -0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh1_0",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.22,
+      0.56,
+      0.36,
+      0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fh0",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.22,
+      0.56,
+      0.36,
+      0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bh0",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      -0.36,
+      0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh-1_1",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.38,
+      -0.2325,
+      0.665,
+      0.38,
+      -0.2325,
+      0.665
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh1_1",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.38,
+      0.2325,
+      0.665,
+      0.38,
+      0.2325,
+      0.665
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fh1",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.38,
+      -0.2325,
+      0.665,
+      0.38,
+      0.2325,
+      0.665
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bh1",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.38,
+      -0.2325,
+      0.665,
+      -0.38,
+      0.2325,
+      0.665
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh-1_2",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.4,
+      -0.245,
+      0.77,
+      0.4,
+      -0.245,
+      0.77
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh1_2",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.4,
+      0.245,
+      0.77,
+      0.4,
+      0.245,
+      0.77
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fh2",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.4,
+      -0.245,
+      0.77,
+      0.4,
+      0.245,
+      0.77
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bh2",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.4,
+      -0.245,
+      0.77,
+      -0.4,
+      0.245,
+      0.77
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh-1_3",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.42,
+      -0.2575,
+      0.875,
+      0.42,
+      -0.2575,
+      0.875
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh1_3",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.42,
+      0.2575,
+      0.875,
+      0.42,
+      0.2575,
+      0.875
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fh3",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.42,
+      -0.2575,
+      0.875,
+      0.42,
+      0.2575,
+      0.875
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bh3",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.42,
+      -0.2575,
+      0.875,
+      -0.42,
+      0.2575,
+      0.875
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh-1_4",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      -0.27,
+      0.98,
+      0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_sh1_4",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      0.27,
+      0.98,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fh4",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.44,
+      -0.27,
+      0.98,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bh4",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      -0.27,
+      0.98,
+      -0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fv0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.22,
+      0.56,
+      0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bv0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      -0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fl0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      0.36,
+      -0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fv1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.1466666666666667,
+      0.56,
+      0.44,
+      -0.18000000000000002,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bv1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.1466666666666667,
+      0.56,
+      -0.44,
+      -0.18000000000000002,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fl1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.1466666666666667,
+      0.56,
+      0.36,
+      -0.1466666666666667,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fv2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.07333333333333335,
+      0.56,
+      0.44,
+      -0.09000000000000001,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bv2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.07333333333333335,
+      0.56,
+      -0.44,
+      -0.09000000000000001,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fl2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.07333333333333335,
+      0.56,
+      0.36,
+      -0.07333333333333335,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fv3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.0,
+      0.56,
+      0.44,
+      0.0,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bv3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.0,
+      0.56,
+      -0.44,
+      0.0,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fl3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.0,
+      0.56,
+      0.36,
+      0.0,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fv4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.07333333333333332,
+      0.56,
+      0.44,
+      0.08999999999999998,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bv4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.07333333333333332,
+      0.56,
+      -0.44,
+      0.08999999999999998,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fl4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.07333333333333332,
+      0.56,
+      0.36,
+      0.07333333333333332,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fv5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.1466666666666667,
+      0.56,
+      0.44,
+      0.18000000000000002,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bv5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.1466666666666667,
+      0.56,
+      -0.44,
+      0.18000000000000002,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fl5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.1466666666666667,
+      0.56,
+      0.36,
+      0.1466666666666667,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fv6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.22,
+      0.56,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_bv6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.22,
+      0.56,
+      -0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_fl6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.22,
+      0.56,
+      0.36,
+      0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_rim_l",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      0.27,
+      0.98,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "cart_red"
+    },
+    {
+     "name": "cart_a_rim_r",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      -0.27,
+      0.98,
+      0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "cart_red"
+    },
+    {
+     "name": "cart_a_rim_f",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.44,
+      -0.27,
+      0.98,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "cart_red"
+    },
+    {
+     "name": "cart_a_handle",
+     "shape": "capsule",
+     "size": [
+      0.016
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.47,
+      -0.27,
+      1.0,
+      -0.47,
+      0.27,
+      1.0
+     ],
+     "material": "cart_red"
+    },
+    {
+     "name": "cart_a_hbar-1",
+     "shape": "capsule",
+     "size": [
+      0.009
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      -0.27,
+      0.98,
+      -0.47,
+      -0.27,
+      1.0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_a_hbar1",
+     "shape": "capsule",
+     "size": [
+      0.009
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      0.27,
+      0.98,
+      -0.47,
+      0.27,
+      1.0
+     ],
+     "material": "chrome"
+    }
+   ],
+   "tags": [
+    "cart"
+   ]
+  },
+  {
+   "name": "cart_b",
+   "shape": "none",
+   "pos": [
+    2.75,
+    0.75,
+    0.0
+   ],
+   "euler": [
+    0,
+    0,
+    152
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "cart_b_wheel0",
+     "shape": "cylinder",
+     "size": [
+      0.04,
+      0.012
+     ],
+     "pos": [
+      0.33,
+      0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "rubber_black"
+    },
+    {
+     "name": "cart_b_hub0",
+     "shape": "cylinder",
+     "size": [
+      0.016,
+      0.014
+     ],
+     "pos": [
+      0.33,
+      0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fork0",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.33,
+      0.2,
+      0.04,
+      0.33,
+      0.2,
+      0.055999999999999994
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_wheel1",
+     "shape": "cylinder",
+     "size": [
+      0.04,
+      0.012
+     ],
+     "pos": [
+      0.33,
+      -0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "rubber_black"
+    },
+    {
+     "name": "cart_b_hub1",
+     "shape": "cylinder",
+     "size": [
+      0.016,
+      0.014
+     ],
+     "pos": [
+      0.33,
+      -0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fork1",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.33,
+      -0.2,
+      0.04,
+      0.33,
+      -0.2,
+      0.055999999999999994
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_wheel2",
+     "shape": "cylinder",
+     "size": [
+      0.04,
+      0.012
+     ],
+     "pos": [
+      -0.33,
+      0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "rubber_black"
+    },
+    {
+     "name": "cart_b_hub2",
+     "shape": "cylinder",
+     "size": [
+      0.016,
+      0.014
+     ],
+     "pos": [
+      -0.33,
+      0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fork2",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.33,
+      0.2,
+      0.04,
+      -0.33,
+      0.2,
+      0.055999999999999994
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_wheel3",
+     "shape": "cylinder",
+     "size": [
+      0.04,
+      0.012
+     ],
+     "pos": [
+      -0.33,
+      -0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "rubber_black"
+    },
+    {
+     "name": "cart_b_hub3",
+     "shape": "cylinder",
+     "size": [
+      0.016,
+      0.014
+     ],
+     "pos": [
+      -0.33,
+      -0.2,
+      0.04
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      90,
+      0,
+      0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fork3",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.33,
+      -0.2,
+      0.04,
+      -0.33,
+      -0.2,
+      0.055999999999999994
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rack",
+     "shape": "box",
+     "size": [
+      0.37,
+      0.215,
+      0.003
+     ],
+     "pos": [
+      0,
+      0,
+      0.056999999999999995
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "rack_grey"
+    },
+    {
+     "name": "cart_b_rw0",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.33636363636363636,
+      -0.215,
+      0.061,
+      -0.33636363636363636,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw1",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.2690909090909091,
+      -0.215,
+      0.061,
+      -0.2690909090909091,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw2",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.20181818181818179,
+      -0.215,
+      0.061,
+      -0.20181818181818179,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw3",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.13454545454545455,
+      -0.215,
+      0.061,
+      -0.13454545454545455,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw4",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.06727272727272728,
+      -0.215,
+      0.061,
+      -0.06727272727272728,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw5",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.0,
+      -0.215,
+      0.061,
+      0.0,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw6",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.06727272727272728,
+      -0.215,
+      0.061,
+      0.06727272727272728,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw7",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.13454545454545455,
+      -0.215,
+      0.061,
+      0.13454545454545455,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw8",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.20181818181818179,
+      -0.215,
+      0.061,
+      0.20181818181818179,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw9",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.2690909090909091,
+      -0.215,
+      0.061,
+      0.2690909090909091,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rw10",
+     "shape": "capsule",
+     "size": [
+      0.0025
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.33636363636363636,
+      -0.215,
+      0.061,
+      0.33636363636363636,
+      0.215,
+      0.061
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rl-1",
+     "shape": "capsule",
+     "size": [
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.37,
+      -0.215,
+      0.064,
+      0.37,
+      -0.215,
+      0.064
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rl1",
+     "shape": "capsule",
+     "size": [
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.37,
+      0.215,
+      0.064,
+      0.37,
+      0.215,
+      0.064
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_re-1",
+     "shape": "capsule",
+     "size": [
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.37,
+      -0.215,
+      0.064,
+      -0.37,
+      0.215,
+      0.064
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_re1",
+     "shape": "capsule",
+     "size": [
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.37,
+      -0.215,
+      0.064,
+      0.37,
+      0.215,
+      0.064
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_post_r-1",
+     "shape": "capsule",
+     "size": [
+      0.011
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.205,
+      0.06,
+      -0.46,
+      -0.25,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_post_f-1",
+     "shape": "capsule",
+     "size": [
+      0.01
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.205,
+      0.06,
+      0.3,
+      -0.2,
+      0.58
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_brace-1",
+     "shape": "capsule",
+     "size": [
+      0.009
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.205,
+      0.06999999999999999,
+      0.36,
+      -0.205,
+      0.06999999999999999
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_post_r1",
+     "shape": "capsule",
+     "size": [
+      0.011
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.205,
+      0.06,
+      -0.46,
+      0.25,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_post_f1",
+     "shape": "capsule",
+     "size": [
+      0.01
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.205,
+      0.06,
+      0.3,
+      0.2,
+      0.58
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_brace1",
+     "shape": "capsule",
+     "size": [
+      0.009
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.205,
+      0.06999999999999999,
+      0.36,
+      0.205,
+      0.06999999999999999
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      -0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.22,
+      0.56,
+      -0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.3,
+      -0.22,
+      0.56,
+      -0.3666666666666667,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.3,
+      0.22,
+      0.56,
+      -0.3666666666666667,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.24,
+      -0.22,
+      0.56,
+      -0.29333333333333333,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.24,
+      0.22,
+      0.56,
+      -0.29333333333333333,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.18,
+      -0.22,
+      0.56,
+      -0.22,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.18,
+      0.22,
+      0.56,
+      -0.22,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.12,
+      -0.22,
+      0.56,
+      -0.14666666666666667,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.12,
+      0.22,
+      0.56,
+      -0.14666666666666667,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.06,
+      -0.22,
+      0.56,
+      -0.0733333333333333,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.06,
+      0.22,
+      0.56,
+      -0.0733333333333333,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.0,
+      -0.22,
+      0.56,
+      0.0,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.0,
+      0.22,
+      0.56,
+      0.0,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_7",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.06,
+      -0.22,
+      0.56,
+      0.07333333333333342,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_7",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.06,
+      0.22,
+      0.56,
+      0.07333333333333342,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_8",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.12,
+      -0.22,
+      0.56,
+      0.14666666666666667,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_8",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.12,
+      0.22,
+      0.56,
+      0.14666666666666667,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_9",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.18000000000000005,
+      -0.22,
+      0.56,
+      0.22000000000000003,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_9",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.18000000000000005,
+      0.22,
+      0.56,
+      0.22000000000000003,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_10",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.24,
+      -0.22,
+      0.56,
+      0.2933333333333334,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_10",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.24,
+      0.22,
+      0.56,
+      0.2933333333333334,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_11",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.29999999999999993,
+      -0.22,
+      0.56,
+      0.36666666666666664,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_11",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.29999999999999993,
+      0.22,
+      0.56,
+      0.36666666666666664,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw-1_12",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.22,
+      0.56,
+      0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sw1_12",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.22,
+      0.56,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh-1_0",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      0.36,
+      -0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh1_0",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.22,
+      0.56,
+      0.36,
+      0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fh0",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.22,
+      0.56,
+      0.36,
+      0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bh0",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      -0.36,
+      0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh-1_1",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.38,
+      -0.2325,
+      0.665,
+      0.38,
+      -0.2325,
+      0.665
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh1_1",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.38,
+      0.2325,
+      0.665,
+      0.38,
+      0.2325,
+      0.665
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fh1",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.38,
+      -0.2325,
+      0.665,
+      0.38,
+      0.2325,
+      0.665
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bh1",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.38,
+      -0.2325,
+      0.665,
+      -0.38,
+      0.2325,
+      0.665
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh-1_2",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.4,
+      -0.245,
+      0.77,
+      0.4,
+      -0.245,
+      0.77
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh1_2",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.4,
+      0.245,
+      0.77,
+      0.4,
+      0.245,
+      0.77
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fh2",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.4,
+      -0.245,
+      0.77,
+      0.4,
+      0.245,
+      0.77
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bh2",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.4,
+      -0.245,
+      0.77,
+      -0.4,
+      0.245,
+      0.77
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh-1_3",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.42,
+      -0.2575,
+      0.875,
+      0.42,
+      -0.2575,
+      0.875
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh1_3",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.42,
+      0.2575,
+      0.875,
+      0.42,
+      0.2575,
+      0.875
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fh3",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.42,
+      -0.2575,
+      0.875,
+      0.42,
+      0.2575,
+      0.875
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bh3",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.42,
+      -0.2575,
+      0.875,
+      -0.42,
+      0.2575,
+      0.875
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh-1_4",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      -0.27,
+      0.98,
+      0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_sh1_4",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      0.27,
+      0.98,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fh4",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.44,
+      -0.27,
+      0.98,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bh4",
+     "shape": "capsule",
+     "size": [
+      0.0032
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      -0.27,
+      0.98,
+      -0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fv0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.22,
+      0.56,
+      0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bv0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      -0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fl0",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.22,
+      0.56,
+      0.36,
+      -0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fv1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.1466666666666667,
+      0.56,
+      0.44,
+      -0.18000000000000002,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bv1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.1466666666666667,
+      0.56,
+      -0.44,
+      -0.18000000000000002,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fl1",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.1466666666666667,
+      0.56,
+      0.36,
+      -0.1466666666666667,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fv2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      -0.07333333333333335,
+      0.56,
+      0.44,
+      -0.09000000000000001,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bv2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.07333333333333335,
+      0.56,
+      -0.44,
+      -0.09000000000000001,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fl2",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      -0.07333333333333335,
+      0.56,
+      0.36,
+      -0.07333333333333335,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fv3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.0,
+      0.56,
+      0.44,
+      0.0,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bv3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.0,
+      0.56,
+      -0.44,
+      0.0,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fl3",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.0,
+      0.56,
+      0.36,
+      0.0,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fv4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.07333333333333332,
+      0.56,
+      0.44,
+      0.08999999999999998,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bv4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.07333333333333332,
+      0.56,
+      -0.44,
+      0.08999999999999998,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fl4",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.07333333333333332,
+      0.56,
+      0.36,
+      0.07333333333333332,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fv5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.1466666666666667,
+      0.56,
+      0.44,
+      0.18000000000000002,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bv5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.1466666666666667,
+      0.56,
+      -0.44,
+      0.18000000000000002,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fl5",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.1466666666666667,
+      0.56,
+      0.36,
+      0.1466666666666667,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fv6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.36,
+      0.22,
+      0.56,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_bv6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.22,
+      0.56,
+      -0.44,
+      0.27,
+      0.98
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_fl6",
+     "shape": "capsule",
+     "size": [
+      0.0028
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.36,
+      0.22,
+      0.56,
+      0.36,
+      0.22,
+      0.56
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_rim_l",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      0.27,
+      0.98,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "cart_red"
+    },
+    {
+     "name": "cart_b_rim_r",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      -0.27,
+      0.98,
+      0.44,
+      -0.27,
+      0.98
+     ],
+     "material": "cart_red"
+    },
+    {
+     "name": "cart_b_rim_f",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.44,
+      -0.27,
+      0.98,
+      0.44,
+      0.27,
+      0.98
+     ],
+     "material": "cart_red"
+    },
+    {
+     "name": "cart_b_handle",
+     "shape": "capsule",
+     "size": [
+      0.016
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.47,
+      -0.27,
+      1.0,
+      -0.47,
+      0.27,
+      1.0
+     ],
+     "material": "cart_red"
+    },
+    {
+     "name": "cart_b_hbar-1",
+     "shape": "capsule",
+     "size": [
+      0.009
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      -0.27,
+      0.98,
+      -0.47,
+      -0.27,
+      1.0
+     ],
+     "material": "chrome"
+    },
+    {
+     "name": "cart_b_hbar1",
+     "shape": "capsule",
+     "size": [
+      0.009
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.44,
+      0.27,
+      0.98,
+      -0.47,
+      0.27,
+      1.0
+     ],
+     "material": "chrome"
+    }
+   ],
+   "tags": [
+    "cart"
+   ]
+  },
+  {
+   "name": "counter",
+   "shape": "box",
+   "size": [
+    0.8250000000000001,
+    0.3,
+    0.42
+   ],
+   "pos": [
+    -2.275,
+    1.0,
+    0.42
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "counter"
+  },
+  {
+   "name": "belt",
+   "shape": "box",
+   "size": [
+    0.775,
+    0.22,
+    0.01
+   ],
+   "pos": [
+    -2.275,
+    1.0,
+    0.85
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "belt"
+  },
+  {
+   "name": "register",
+   "shape": "box",
+   "size": [
+    0.16,
+    0.14,
+    0.12
+   ],
+   "pos": [
+    -2.85,
+    1.05,
+    0.98
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "steel"
+  },
+  {
+   "name": "register_screen",
+   "shape": "box",
+   "size": [
+    0.01,
+    0.11,
+    0.08
+   ],
+   "pos": [
+    -2.7,
+    1.05,
+    1.18
+   ],
+   "kind": "static",
+   "collision": false,
+   "euler": [
+    0,
+    20,
+    0
+   ],
+   "material": "screen"
+  },
+  {
+   "name": "lane_pole",
+   "shape": "cylinder",
+   "size": [
+    0.025,
+    1.0
+   ],
+   "pos": [
+    -1.5,
+    0.75,
+    1.0
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "steel"
+  },
+  {
+   "name": "lane_sign",
+   "shape": "box",
+   "size": [
+    0.26,
+    0.13,
+    0.004
+   ],
+   "pos": [
+    -1.4749999999999999,
+    0.75,
+    2.1
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "material": "checkout_sign"
+  },
+  {
+   "name": "lane_sign_back",
+   "shape": "box",
+   "size": [
+    0.26,
+    0.13,
+    0.004
+   ],
+   "pos": [
+    -1.525,
+    0.75,
+    2.1
+   ],
+   "kind": "static",
+   "collision": false,
+   "quat": [
+    0.5,
+    0.5,
+    -0.5,
+    -0.5
+   ],
+   "material": "checkout_sign"
+  },
+  {
+   "name": "candy0",
+   "shape": "box",
+   "size": [
+    0.1,
+    0.05,
+    0.07
+   ],
+   "pos": [
+    -1.75,
+    0.6699999999999999,
+    0.35
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "products0"
+  },
+  {
+   "name": "candy1",
+   "shape": "box",
+   "size": [
+    0.1,
+    0.05,
+    0.07
+   ],
+   "pos": [
+    -1.97,
+    0.6699999999999999,
+    0.35
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "products1"
+  },
+  {
+   "name": "candy2",
+   "shape": "box",
+   "size": [
+    0.1,
+    0.05,
+    0.07
+   ],
+   "pos": [
+    -2.19,
+    0.6699999999999999,
+    0.35
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "products2"
+  },
+  {
+   "name": "candy3",
+   "shape": "box",
+   "size": [
+    0.1,
+    0.05,
+    0.07
+   ],
+   "pos": [
+    -2.41,
+    0.6699999999999999,
+    0.35
+   ],
+   "kind": "static",
+   "collision": false,
+   "material": "products0"
+  },
+  {
+   "name": "deal",
+   "shape": "none",
+   "pos": [
+    0.02,
+    -0.15,
+    0.06
+   ],
+   "kind": "dynamic",
+   "mass": 0.15,
+   "tags": [
+    "prop",
+    "deal"
+   ],
+   "children": [
+    {
+     "name": "deal_box",
+     "shape": "box",
+     "size": [
+      0.07,
+      0.04,
+      0.016
+     ],
+     "pos": [
+      0,
+      0,
+      0.016
+     ],
+     "material": "phone_box",
+     "mass": 0.1455,
+     "kind": "dynamic",
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "friction": [
+      0.9,
+      0.005,
+      0.0001
+     ]
+    },
+    {
+     "name": "deal_tag",
+     "shape": "box",
+     "size": [
+      0.026,
+      0.026,
+      0.0008
+     ],
+     "pos": [
+      0.03,
+      0.0,
+      0.0328
+     ],
+     "euler": [
+      0,
+      0,
+      18
+     ],
+     "material": "tag70",
+     "mass": 0.0045,
+     "kind": "dynamic",
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "friction": [
+      0.9,
+      0.005,
+      0.0001
+     ]
+    }
+   ]
+  },
+  {
+   "name": "basket",
+   "shape": "none",
+   "pos": [
+    -1.9,
+    0.2,
+    0.0
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "basket_floor",
+     "shape": "box",
+     "size": [
+      0.15,
+      0.105,
+      0.004
+     ],
+     "pos": [
+      0,
+      0,
+      0.004
+     ],
+     "kind": "static",
+     "collision": true,
+     "contype": 2048,
+     "conaffinity": 2048,
+     "material": "basket_red"
+    },
+    {
+     "name": "basket_wall_xp",
+     "shape": "box",
+     "size": [
+      0.006,
+      0.105,
+      0.0275
+     ],
+     "pos": [
+      0.144,
+      0,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": true,
+     "contype": 2048,
+     "conaffinity": 2048,
+     "material": "basket_red"
+    },
+    {
+     "name": "basket_wall_xn",
+     "shape": "box",
+     "size": [
+      0.006,
+      0.105,
+      0.0275
+     ],
+     "pos": [
+      -0.144,
+      0,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": true,
+     "contype": 2048,
+     "conaffinity": 2048,
+     "material": "basket_red"
+    },
+    {
+     "name": "basket_wall_yp",
+     "shape": "box",
+     "size": [
+      0.15,
+      0.006,
+      0.0275
+     ],
+     "pos": [
+      0,
+      0.09899999999999999,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": true,
+     "contype": 2048,
+     "conaffinity": 2048,
+     "material": "basket_red"
+    },
+    {
+     "name": "basket_wall_yn",
+     "shape": "box",
+     "size": [
+      0.15,
+      0.006,
+      0.0275
+     ],
+     "pos": [
+      0,
+      -0.09899999999999999,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": true,
+     "contype": 2048,
+     "conaffinity": 2048,
+     "material": "basket_red"
+    },
+    {
+     "name": "basket_handle-1",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.09,
+      -0.109,
+      0.055,
+      0.09,
+      -0.109,
+      0.055
+     ],
+     "material": "basket_red"
+    },
+    {
+     "name": "basket_handle1",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.09,
+      0.109,
+      0.055,
+      0.09,
+      0.109,
+      0.055
+     ],
+     "material": "basket_red"
+    },
+    {
+     "name": "basket_slot-1_0",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      -0.12,
+      -0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot1_0",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      -0.12,
+      0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot-1_1",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      -0.08,
+      -0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot1_1",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      -0.08,
+      0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot-1_2",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      -0.04,
+      -0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot1_2",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      -0.04,
+      0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot-1_3",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      0.0,
+      -0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot1_3",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      0.0,
+      0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot-1_4",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      0.04,
+      -0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot1_4",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      0.04,
+      0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot-1_5",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      0.08,
+      -0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot1_5",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      0.08,
+      0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot-1_6",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      0.12,
+      -0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "basket_slot1_6",
+     "shape": "box",
+     "size": [
+      0.012,
+      0.0008,
+      0.015400000000000002
+     ],
+     "pos": [
+      0.12,
+      0.1052,
+      0.0275
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.55,
+      0.06,
+      0.08,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "basket"
+   ]
+  },
+  {
+   "name": "prop_floor",
+   "shape": "box",
+   "size": [
+    4.0,
+    2.2,
+    0.005
+   ],
+   "pos": [
+    0.25,
+    0,
+    -0.005
+   ],
+   "kind": "static",
+   "contype": 0,
+   "conaffinity": 2048,
+   "rgba": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "group": 3
+  },
+  {
+   "name": "shopper_a",
+   "shape": "none",
+   "pos": [
+    -0.8,
+    0.0,
+    0.0
+   ],
+   "euler": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "shopper_a_shoe-1",
+     "shape": "ellipsoid",
+     "size": [
+      0.13,
+      0.055,
+      0.045
+     ],
+     "pos": [
+      0.04,
+      -0.095,
+      0.045
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shoe"
+    },
+    {
+     "name": "shopper_a_leg-1",
+     "shape": "capsule",
+     "size": [
+      0.065
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      -0.095,
+      0.09,
+      0,
+      -0.09025,
+      0.86
+     ],
+     "rgba": [
+      0.12,
+      0.13,
+      0.2,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_shoe1",
+     "shape": "ellipsoid",
+     "size": [
+      0.13,
+      0.055,
+      0.045
+     ],
+     "pos": [
+      0.04,
+      0.095,
+      0.045
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shoe"
+    },
+    {
+     "name": "shopper_a_leg1",
+     "shape": "capsule",
+     "size": [
+      0.065
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0.095,
+      0.09,
+      0,
+      0.09025,
+      0.86
+     ],
+     "rgba": [
+      0.12,
+      0.13,
+      0.2,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_hips",
+     "shape": "ellipsoid",
+     "size": [
+      0.14,
+      0.19,
+      0.12
+     ],
+     "pos": [
+      0,
+      0,
+      0.9
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.12,
+      0.13,
+      0.2,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_torso",
+     "shape": "ellipsoid",
+     "size": [
+      0.16,
+      0.23,
+      0.33
+     ],
+     "pos": [
+      0,
+      0,
+      1.2
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "coat_red"
+    },
+    {
+     "name": "shopper_a_coat_hem",
+     "shape": "ellipsoid",
+     "size": [
+      0.17,
+      0.22,
+      0.1
+     ],
+     "pos": [
+      0,
+      0,
+      0.98
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "coat_red"
+    },
+    {
+     "name": "shopper_a_neck",
+     "shape": "capsule",
+     "size": [
+      0.05
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0,
+      1.45,
+      0,
+      0,
+      1.54
+     ],
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_uarm-1",
+     "shape": "capsule",
+     "size": [
+      0.055
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      -0.235,
+      1.4,
+      0.15,
+      -0.27,
+      1.13
+     ],
+     "material": "coat_red"
+    },
+    {
+     "name": "shopper_a_farm-1",
+     "shape": "capsule",
+     "size": [
+      0.048
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.15,
+      -0.27,
+      1.13,
+      0.33,
+      -0.15,
+      1.0
+     ],
+     "material": "coat_red"
+    },
+    {
+     "name": "shopper_a_hand-1",
+     "shape": "sphere",
+     "size": [
+      0.05
+     ],
+     "pos": [
+      0.33,
+      -0.15,
+      1.0
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_uarm1",
+     "shape": "capsule",
+     "size": [
+      0.055
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0.235,
+      1.4,
+      0.15,
+      0.27,
+      1.13
+     ],
+     "material": "coat_red"
+    },
+    {
+     "name": "shopper_a_farm1",
+     "shape": "capsule",
+     "size": [
+      0.048
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.15,
+      0.27,
+      1.13,
+      0.33,
+      0.15,
+      1.0
+     ],
+     "material": "coat_red"
+    },
+    {
+     "name": "shopper_a_hand1",
+     "shape": "sphere",
+     "size": [
+      0.05
+     ],
+     "pos": [
+      0.33,
+      0.15,
+      1.0
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_bag",
+     "shape": "box",
+     "size": [
+      0.11,
+      0.045,
+      0.14
+     ],
+     "pos": [
+      -0.02,
+      -0.34,
+      0.66
+     ],
+     "kind": "static",
+     "collision": false,
+     "euler": [
+      0,
+      8,
+      0
+     ],
+     "material": "bag_yellow"
+    },
+    {
+     "name": "shopper_a_bag_strap",
+     "shape": "capsule",
+     "size": [
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      -0.02,
+      -0.34,
+      0.8,
+      0.02,
+      -0.27,
+      1.02
+     ],
+     "material": "bag_yellow"
+    }
+   ],
+   "tags": [
+    "figure"
+   ]
+  },
+  {
+   "name": "shopper_a_head",
+   "shape": "none",
+   "pos": [
+    -0.8,
+    0.0,
+    1.66
+   ],
+   "euler": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "shopper_a_skull",
+     "shape": "ellipsoid",
+     "size": [
+      0.105,
+      0.095,
+      0.125
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_nose",
+     "shape": "ellipsoid",
+     "size": [
+      0.03,
+      0.018,
+      0.03
+     ],
+     "pos": [
+      0.1,
+      0,
+      -0.01
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_hair",
+     "shape": "ellipsoid",
+     "size": [
+      0.112,
+      0.1,
+      0.09
+     ],
+     "pos": [
+      -0.015,
+      0,
+      0.05
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.3,
+      0.16,
+      0.08,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_eye-1",
+     "shape": "sphere",
+     "size": [
+      0.012
+     ],
+     "pos": [
+      0.095,
+      -0.038,
+      0.012
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.08,
+      0.07,
+      0.07,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_eye1",
+     "shape": "sphere",
+     "size": [
+      0.012
+     ],
+     "pos": [
+      0.095,
+      0.038,
+      0.012
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.08,
+      0.07,
+      0.07,
+      1
+     ]
+    },
+    {
+     "name": "shopper_a_bun",
+     "shape": "sphere",
+     "size": [
+      0.05
+     ],
+     "pos": [
+      -0.1,
+      0,
+      0.08
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.3,
+      0.16,
+      0.08,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "figure",
+    "head"
+   ]
+  },
+  {
+   "name": "shopper_b",
+   "shape": "none",
+   "pos": [
+    0.74,
+    0.0,
+    0.0
+   ],
+   "euler": [
+    0,
+    0,
+    180
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "shopper_b_shoe-1",
+     "shape": "ellipsoid",
+     "size": [
+      0.13520000000000001,
+      0.0572,
+      0.0468
+     ],
+     "pos": [
+      0.041600000000000005,
+      -0.0988,
+      0.0468
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shoe"
+    },
+    {
+     "name": "shopper_b_leg-1",
+     "shape": "capsule",
+     "size": [
+      0.06760000000000001
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      -0.0988,
+      0.0936,
+      0,
+      -0.09386,
+      0.8944
+     ],
+     "rgba": [
+      0.22,
+      0.2,
+      0.18,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_shoe1",
+     "shape": "ellipsoid",
+     "size": [
+      0.13520000000000001,
+      0.0572,
+      0.0468
+     ],
+     "pos": [
+      0.041600000000000005,
+      0.0988,
+      0.0468
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shoe"
+    },
+    {
+     "name": "shopper_b_leg1",
+     "shape": "capsule",
+     "size": [
+      0.06760000000000001
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0.0988,
+      0.0936,
+      0,
+      0.09386,
+      0.8944
+     ],
+     "rgba": [
+      0.22,
+      0.2,
+      0.18,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_hips",
+     "shape": "ellipsoid",
+     "size": [
+      0.1456,
+      0.1976,
+      0.1248
+     ],
+     "pos": [
+      0,
+      0,
+      0.936
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.22,
+      0.2,
+      0.18,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_torso",
+     "shape": "ellipsoid",
+     "size": [
+      0.16640000000000002,
+      0.23920000000000002,
+      0.3432
+     ],
+     "pos": [
+      0,
+      0,
+      1.248
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "coat_green"
+    },
+    {
+     "name": "shopper_b_coat_hem",
+     "shape": "ellipsoid",
+     "size": [
+      0.1768,
+      0.2288,
+      0.10400000000000001
+     ],
+     "pos": [
+      0,
+      0,
+      1.0192
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "coat_green"
+    },
+    {
+     "name": "shopper_b_neck",
+     "shape": "capsule",
+     "size": [
+      0.052000000000000005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0,
+      1.508,
+      0,
+      0,
+      1.6016000000000001
+     ],
+     "rgba": [
+      0.62,
+      0.43,
+      0.3,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_uarm1",
+     "shape": "capsule",
+     "size": [
+      0.0572
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0.2444,
+      1.456,
+      0.1872,
+      0.312,
+      1.1232000000000002
+     ],
+     "material": "coat_green"
+    },
+    {
+     "name": "shopper_b_farm1",
+     "shape": "capsule",
+     "size": [
+      0.049920000000000006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.1872,
+      0.312,
+      1.1232000000000002,
+      0.3,
+      0.18,
+      0.96
+     ],
+     "material": "coat_green"
+    },
+    {
+     "name": "shopper_b_hand1",
+     "shape": "sphere",
+     "size": [
+      0.052000000000000005
+     ],
+     "pos": [
+      0.3,
+      0.18,
+      0.96
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.62,
+      0.43,
+      0.3,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_uarm-1",
+     "shape": "capsule",
+     "size": [
+      0.0572
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      -0.2444,
+      1.456,
+      0.10400000000000001,
+      -0.41600000000000004,
+      1.456
+     ],
+     "material": "coat_green"
+    },
+    {
+     "name": "shopper_b_farm-1",
+     "shape": "capsule",
+     "size": [
+      0.049920000000000006
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.10400000000000001,
+      -0.41600000000000004,
+      1.456,
+      0.1872,
+      -0.4368,
+      1.7472
+     ],
+     "material": "coat_green"
+    },
+    {
+     "name": "shopper_b_hand-1",
+     "shape": "sphere",
+     "size": [
+      0.052000000000000005
+     ],
+     "pos": [
+      0.1872,
+      -0.4368,
+      1.7472
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.62,
+      0.43,
+      0.3,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "figure"
+   ]
+  },
+  {
+   "name": "shopper_b_head",
+   "shape": "none",
+   "pos": [
+    0.74,
+    0.0,
+    1.7264
+   ],
+   "euler": [
+    0,
+    0,
+    180
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "shopper_b_skull",
+     "shape": "ellipsoid",
+     "size": [
+      0.1092,
+      0.0988,
+      0.13
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.62,
+      0.43,
+      0.3,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_nose",
+     "shape": "ellipsoid",
+     "size": [
+      0.0312,
+      0.01872,
+      0.0312
+     ],
+     "pos": [
+      0.10400000000000001,
+      0,
+      -0.010400000000000001
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.62,
+      0.43,
+      0.3,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_hair",
+     "shape": "ellipsoid",
+     "size": [
+      0.11648,
+      0.10400000000000001,
+      0.0936
+     ],
+     "pos": [
+      -0.0156,
+      0,
+      0.052000000000000005
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.1,
+      0.08,
+      0.07,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_eye-1",
+     "shape": "sphere",
+     "size": [
+      0.012480000000000002
+     ],
+     "pos": [
+      0.0988,
+      -0.03952,
+      0.012480000000000002
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.08,
+      0.07,
+      0.07,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_eye1",
+     "shape": "sphere",
+     "size": [
+      0.012480000000000002
+     ],
+     "pos": [
+      0.0988,
+      0.03952,
+      0.012480000000000002
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.08,
+      0.07,
+      0.07,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_beanie",
+     "shape": "ellipsoid",
+     "size": [
+      0.12272,
+      0.11232,
+      0.10400000000000001
+     ],
+     "pos": [
+      -0.010400000000000001,
+      0,
+      0.0728
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.96,
+      0.62,
+      0.1,
+      1
+     ]
+    },
+    {
+     "name": "shopper_b_pompom",
+     "shape": "sphere",
+     "size": [
+      0.0364
+     ],
+     "pos": [
+      -0.010400000000000001,
+      0,
+      0.1768
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.98,
+      0.96,
+      0.9,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "figure",
+    "head"
+   ]
+  },
+  {
+   "name": "kid",
+   "shape": "none",
+   "pos": [
+    -1.92,
+    0.52,
+    0.0
+   ],
+   "euler": [
+    0,
+    0,
+    -90
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "kid_shoe-1",
+     "shape": "ellipsoid",
+     "size": [
+      0.0858,
+      0.0363,
+      0.0297
+     ],
+     "pos": [
+      0.026400000000000003,
+      -0.0627,
+      0.0297
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shoe"
+    },
+    {
+     "name": "kid_leg-1",
+     "shape": "capsule",
+     "size": [
+      0.0429
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      -0.0627,
+      0.0594,
+      0,
+      -0.059565,
+      0.5676
+     ],
+     "rgba": [
+      0.2,
+      0.26,
+      0.42,
+      1
+     ]
+    },
+    {
+     "name": "kid_shoe1",
+     "shape": "ellipsoid",
+     "size": [
+      0.0858,
+      0.0363,
+      0.0297
+     ],
+     "pos": [
+      0.026400000000000003,
+      0.0627,
+      0.0297
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "shoe"
+    },
+    {
+     "name": "kid_leg1",
+     "shape": "capsule",
+     "size": [
+      0.0429
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0.0627,
+      0.0594,
+      0,
+      0.059565,
+      0.5676
+     ],
+     "rgba": [
+      0.2,
+      0.26,
+      0.42,
+      1
+     ]
+    },
+    {
+     "name": "kid_hips",
+     "shape": "ellipsoid",
+     "size": [
+      0.09240000000000001,
+      0.1254,
+      0.0792
+     ],
+     "pos": [
+      0,
+      0,
+      0.5940000000000001
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.2,
+      0.26,
+      0.42,
+      1
+     ]
+    },
+    {
+     "name": "kid_torso",
+     "shape": "ellipsoid",
+     "size": [
+      0.10560000000000001,
+      0.15180000000000002,
+      0.21780000000000002
+     ],
+     "pos": [
+      0,
+      0,
+      0.792
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "coat_teal"
+    },
+    {
+     "name": "kid_coat_hem",
+     "shape": "ellipsoid",
+     "size": [
+      0.11220000000000001,
+      0.1452,
+      0.066
+     ],
+     "pos": [
+      0,
+      0,
+      0.6468
+     ],
+     "kind": "static",
+     "collision": false,
+     "material": "coat_teal"
+    },
+    {
+     "name": "kid_neck",
+     "shape": "capsule",
+     "size": [
+      0.033
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0,
+      0.957,
+      0,
+      0,
+      1.0164
+     ],
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ]
+    },
+    {
+     "name": "kid_uarm1",
+     "shape": "capsule",
+     "size": [
+      0.0363
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      0.1551,
+      0.9239999999999999,
+      0.026400000000000003,
+      0.17820000000000003,
+      0.7392000000000001
+     ],
+     "material": "coat_teal"
+    },
+    {
+     "name": "kid_farm1",
+     "shape": "capsule",
+     "size": [
+      0.03168
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.026400000000000003,
+      0.17820000000000003,
+      0.7392000000000001,
+      0.066,
+      0.165,
+      0.5676
+     ],
+     "material": "coat_teal"
+    },
+    {
+     "name": "kid_hand1",
+     "shape": "sphere",
+     "size": [
+      0.033
+     ],
+     "pos": [
+      0.066,
+      0.165,
+      0.5676
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ]
+    },
+    {
+     "name": "kid_uarm-1",
+     "shape": "capsule",
+     "size": [
+      0.0363
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0,
+      -0.1551,
+      0.9239999999999999,
+      0.026400000000000003,
+      -0.17820000000000003,
+      0.7392000000000001
+     ],
+     "material": "coat_teal"
+    },
+    {
+     "name": "kid_farm-1",
+     "shape": "capsule",
+     "size": [
+      0.03168
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "fromto": [
+      0.026400000000000003,
+      -0.17820000000000003,
+      0.7392000000000001,
+      0.066,
+      -0.165,
+      0.5676
+     ],
+     "material": "coat_teal"
+    },
+    {
+     "name": "kid_hand-1",
+     "shape": "sphere",
+     "size": [
+      0.033
+     ],
+     "pos": [
+      0.066,
+      -0.165,
+      0.5676
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "figure"
+   ]
+  },
+  {
+   "name": "kid_head",
+   "shape": "none",
+   "pos": [
+    -1.92,
+    0.52,
+    1.0956
+   ],
+   "euler": [
+    0,
+    0,
+    -90
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "kid_skull",
+     "shape": "ellipsoid",
+     "size": [
+      0.0693,
+      0.0627,
+      0.0825
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ]
+    },
+    {
+     "name": "kid_nose",
+     "shape": "ellipsoid",
+     "size": [
+      0.0198,
+      0.01188,
+      0.0198
+     ],
+     "pos": [
+      0.066,
+      0,
+      -0.006600000000000001
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ]
+    },
+    {
+     "name": "kid_hair",
+     "shape": "ellipsoid",
+     "size": [
+      0.07392,
+      0.066,
+      0.0594
+     ],
+     "pos": [
+      -0.0099,
+      0,
+      0.033
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.18,
+      0.1,
+      0.06,
+      1
+     ]
+    },
+    {
+     "name": "kid_eye-1",
+     "shape": "sphere",
+     "size": [
+      0.00792
+     ],
+     "pos": [
+      0.0627,
+      -0.02508,
+      0.00792
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.08,
+      0.07,
+      0.07,
+      1
+     ]
+    },
+    {
+     "name": "kid_eye1",
+     "shape": "sphere",
+     "size": [
+      0.00792
+     ],
+     "pos": [
+      0.0627,
+      0.02508,
+      0.00792
+     ],
+     "kind": "static",
+     "collision": false,
+     "rgba": [
+      0.08,
+      0.07,
+      0.07,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "figure",
+    "head"
+   ]
+  }
+ ],
+ "cameras": [
+  {
+   "name": "hook",
+   "pos": [
+    2.6,
+    1.3,
+    1.45
+   ],
+   "target": [
+    0.0,
+    0.0,
+    0.95
+   ],
+   "fovy": 50
+  },
+  {
+   "name": "crab_low",
+   "pos": [
+    -0.35,
+    -0.33,
+    0.08
+   ],
+   "target": [
+    0.02,
+    -0.19,
+    0.08
+   ],
+   "fovy": 45
+  },
+  {
+   "name": "checkout",
+   "pos": [
+    -1.2,
+    -0.8,
+    0.45
+   ],
+   "target": [
+    -1.9,
+    0.2,
+    0.15
+   ],
+   "fovy": 45
+  }
+ ],
+ "spawn": {
+  "position": [
+   1.6,
+   -0.55,
+   0.0
+  ],
+  "yaw": 180,
+  "clearance": 0.12,
+  "bounds": [
+   -3.5,
+   -1.4,
+   0.0,
+   4.2,
+   1.4,
+   0.6
+  ]
+ }
+}
