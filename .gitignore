@@ -30,3 +30,7 @@ MUJOCO_LOG.TXT
 *.pem
 *.key
 credentials*.json
+
+# per-film build folders
+build/
+out_final/

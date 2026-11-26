@@ -1,0 +1,4740 @@
+{
+ "name": "king-crab-table",
+ "title": "Thanksgiving Table for King Crab",
+ "description": "A long wooden Thanksgiving dinner table at golden hour with candle glow. Seven light dynamic props (butter dish, bread rolls, gravy boat, cranberry dish, phone, a kid's folded drawing, a napkin) sit near the robot's spawn on the table top; five family members' sleeved hands are parked off the table edges as static bodies for a host to animate kinematically. Robot spawn is on the table top.",
+ "tags": [
+  "indoor",
+  "tabletop",
+  "thanksgiving",
+  "hand-off"
+ ],
+ "physics": {
+  "timestep": 0.001,
+  "integrator": "implicitfast",
+  "cone": "pyramidal",
+  "iterations": 10
+ },
+ "sky": {
+  "preset": "indoor",
+  "top": [
+   0.2,
+   0.12,
+   0.08
+  ],
+  "bottom": [
+   0.3,
+   0.18,
+   0.1
+  ]
+ },
+ "lighting": {
+  "headlight": false,
+  "shadows": true,
+  "shadow_quality": "high",
+  "ambient": [
+   0.11,
+   0.095,
+   0.085
+  ],
+  "lights": [
+   {
+    "name": "golden_sun",
+    "type": "spot",
+    "pos": [
+     -1.6,
+     2.2,
+     2.0
+    ],
+    "target": [
+     0.1,
+     0,
+     0.76
+    ],
+    "diffuse": [
+     0.78,
+     0.55,
+     0.33
+    ],
+    "specular": [
+     0.35,
+     0.26,
+     0.16
+    ],
+    "cutoff": 34,
+    "exponent": 3,
+    "castshadow": true
+   },
+   {
+    "name": "warm_fill",
+    "type": "spot",
+    "pos": [
+     1.9,
+     -1.0,
+     1.8
+    ],
+    "target": [
+     0,
+     0,
+     0.76
+    ],
+    "diffuse": [
+     0.3,
+     0.27,
+     0.25
+    ],
+    "specular": [
+     0.08,
+     0.07,
+     0.06
+    ],
+    "cutoff": 50,
+    "castshadow": false
+   },
+   {
+    "name": "rim_back",
+    "type": "spot",
+    "pos": [
+     -2.0,
+     -0.4,
+     1.4
+    ],
+    "target": [
+     0,
+     0,
+     0.81
+    ],
+    "diffuse": [
+     0.4,
+     0.29,
+     0.18
+    ],
+    "specular": [
+     0.45,
+     0.32,
+     0.18
+    ],
+    "cutoff": 30,
+    "castshadow": false
+   },
+   {
+    "name": "candle_glow0",
+    "type": "point",
+    "pos": [
+     -0.25,
+     0.1,
+     0.9
+    ],
+    "diffuse": [
+     0.22,
+     0.13,
+     0.05
+    ],
+    "specular": [
+     0.1,
+     0.06,
+     0.02
+    ],
+    "attenuation": [
+     0.2,
+     2.0,
+     6.0
+    ],
+    "castshadow": false
+   },
+   {
+    "name": "candle_glow1",
+    "type": "point",
+    "pos": [
+     -0.25,
+     -0.12,
+     0.9
+    ],
+    "diffuse": [
+     0.22,
+     0.13,
+     0.05
+    ],
+    "specular": [
+     0.1,
+     0.06,
+     0.02
+    ],
+    "attenuation": [
+     0.2,
+     2.0,
+     6.0
+    ],
+    "castshadow": false
+   },
+   {
+    "name": "candle_glow2",
+    "type": "point",
+    "pos": [
+     0.64,
+     0.15,
+     0.9
+    ],
+    "diffuse": [
+     0.22,
+     0.13,
+     0.05
+    ],
+    "specular": [
+     0.1,
+     0.06,
+     0.02
+    ],
+    "attenuation": [
+     0.2,
+     2.0,
+     6.0
+    ],
+    "castshadow": false
+   },
+   {
+    "name": "candle_glow3",
+    "type": "point",
+    "pos": [
+     0.64,
+     -0.14,
+     0.9
+    ],
+    "diffuse": [
+     0.22,
+     0.13,
+     0.05
+    ],
+    "specular": [
+     0.1,
+     0.06,
+     0.02
+    ],
+    "attenuation": [
+     0.2,
+     2.0,
+     6.0
+    ],
+    "castshadow": false
+   }
+  ]
+ },
+ "ground": {
+  "type": "plane",
+  "size": [
+   4,
+   4
+  ],
+  "material": "floor_wood",
+  "friction": "wood"
+ },
+ "materials": [
+  {
+   "name": "table_wood",
+   "texture": {
+    "file": "textures/table_wood.png"
+   },
+   "texrepeat": [
+    2,
+    1
+   ],
+   "shininess": 0.55,
+   "specular": 0.35,
+   "reflectance": 0.06
+  },
+  {
+   "name": "floor_wood",
+   "texture": {
+    "file": "textures/floor_wood.png"
+   },
+   "texrepeat": [
+    4,
+    4
+   ],
+   "texuniform": true,
+   "shininess": 0.3,
+   "specular": 0.2
+  },
+  {
+   "name": "backdrop",
+   "texture": {
+    "file": "textures/backdrop.png"
+   },
+   "emission": 0.55,
+   "specular": 0.0,
+   "shininess": 0.0
+  },
+  {
+   "name": "runner",
+   "texture": {
+    "file": "textures/runner.png"
+   },
+   "texrepeat": [
+    1,
+    2
+   ],
+   "specular": 0.05
+  },
+  {
+   "name": "drawing",
+   "texture": {
+    "file": "textures/drawing.png"
+   },
+   "specular": 0.05
+  },
+  {
+   "name": "phone_screen",
+   "texture": {
+    "file": "textures/phone.png"
+   },
+   "emission": 0.6,
+   "specular": 0.5
+  },
+  {
+   "name": "sleeve_flannel",
+   "texture": {
+    "file": "textures/flannel.png"
+   },
+   "texrepeat": [
+    3,
+    3
+   ],
+   "specular": 0.05
+  },
+  {
+   "name": "sleeve_sweater",
+   "texture": {
+    "file": "textures/sweater.png"
+   },
+   "texrepeat": [
+    3,
+    3
+   ],
+   "specular": 0.05
+  },
+  {
+   "name": "sleeve_olive",
+   "texture": {
+    "file": "textures/olive.png"
+   },
+   "texrepeat": [
+    3,
+    3
+   ],
+   "specular": 0.05
+  },
+  {
+   "name": "sleeve_cardigan",
+   "texture": {
+    "file": "textures/cardigan.png"
+   },
+   "texrepeat": [
+    3,
+    3
+   ],
+   "specular": 0.05
+  },
+  {
+   "name": "sleeve_hoodie",
+   "texture": {
+    "file": "textures/hoodie.png"
+   },
+   "texrepeat": [
+    3,
+    3
+   ],
+   "specular": 0.05
+  },
+  {
+   "name": "wicker",
+   "texture": {
+    "file": "textures/wicker.png"
+   },
+   "texrepeat": [
+    2,
+    2
+   ],
+   "specular": 0.1
+  },
+  {
+   "name": "china",
+   "rgba": [
+    0.93,
+    0.93,
+    0.92,
+    1
+   ],
+   "shininess": 0.8,
+   "specular": 0.6
+  },
+  {
+   "name": "gold_trim",
+   "rgba": [
+    0.85,
+    0.66,
+    0.25,
+    1
+   ],
+   "shininess": 0.9,
+   "specular": 0.8
+  },
+  {
+   "name": "glass",
+   "rgba": [
+    0.85,
+    0.92,
+    0.95,
+    0.3
+   ],
+   "shininess": 1.0,
+   "specular": 1.0
+  },
+  {
+   "name": "silver",
+   "rgba": [
+    0.78,
+    0.78,
+    0.8,
+    1
+   ],
+   "shininess": 0.9,
+   "specular": 0.9
+  },
+  {
+   "name": "flame",
+   "rgba": [
+    1.0,
+    0.78,
+    0.35,
+    1
+   ],
+   "emission": 1.0
+  },
+  {
+   "name": "roast",
+   "rgba": [
+    0.62,
+    0.32,
+    0.12,
+    1
+   ],
+   "shininess": 0.7,
+   "specular": 0.6
+  },
+  {
+   "name": "jelly",
+   "rgba": [
+    0.62,
+    0.02,
+    0.1,
+    0.92
+   ],
+   "shininess": 0.9,
+   "specular": 0.9
+  },
+  {
+   "name": "wax",
+   "rgba": [
+    0.96,
+    0.92,
+    0.82,
+    1
+   ],
+   "emission": 0.15
+  }
+ ],
+ "objects": [
+  {
+   "name": "backdrop_wall",
+   "shape": "box",
+   "size": [
+    0.05,
+    3.2,
+    1.6
+   ],
+   "pos": [
+    -2.9,
+    0,
+    1.4
+   ],
+   "kind": "static",
+   "material": "backdrop",
+   "collision": false
+  },
+  {
+   "name": "front_wall",
+   "shape": "box",
+   "size": [
+    0.05,
+    3.2,
+    1.6
+   ],
+   "pos": [
+    2.9,
+    0,
+    1.4
+   ],
+   "kind": "static",
+   "material": "backdrop",
+   "collision": false
+  },
+  {
+   "name": "side_wall_l",
+   "shape": "box",
+   "size": [
+    3.2,
+    0.05,
+    1.6
+   ],
+   "pos": [
+    0,
+    -3.0,
+    1.4
+   ],
+   "kind": "static",
+   "material": "backdrop",
+   "collision": false
+  },
+  {
+   "name": "side_wall_r",
+   "shape": "box",
+   "size": [
+    3.2,
+    0.05,
+    1.6
+   ],
+   "pos": [
+    0,
+    3.0,
+    1.4
+   ],
+   "kind": "static",
+   "material": "backdrop",
+   "collision": false
+  },
+  {
+   "name": "table_top",
+   "shape": "box",
+   "size": [
+    1.15,
+    0.52,
+    0.022
+   ],
+   "pos": [
+    0,
+    0,
+    0.738
+   ],
+   "kind": "static",
+   "material": "table_wood",
+   "friction": [
+    1.0,
+    0.01,
+    0.001
+   ],
+   "contype": 1,
+   "conaffinity": 2049
+  },
+  {
+   "name": "table_leg0",
+   "shape": "box",
+   "size": [
+    0.035,
+    0.035,
+    0.358
+   ],
+   "pos": [
+    1.0699999999999998,
+    0.44,
+    0.358
+   ],
+   "kind": "static",
+   "material": "table_wood",
+   "collision": false
+  },
+  {
+   "name": "table_leg1",
+   "shape": "box",
+   "size": [
+    0.035,
+    0.035,
+    0.358
+   ],
+   "pos": [
+    1.0699999999999998,
+    -0.44,
+    0.358
+   ],
+   "kind": "static",
+   "material": "table_wood",
+   "collision": false
+  },
+  {
+   "name": "table_leg2",
+   "shape": "box",
+   "size": [
+    0.035,
+    0.035,
+    0.358
+   ],
+   "pos": [
+    -1.0699999999999998,
+    0.44,
+    0.358
+   ],
+   "kind": "static",
+   "material": "table_wood",
+   "collision": false
+  },
+  {
+   "name": "table_leg3",
+   "shape": "box",
+   "size": [
+    0.035,
+    0.035,
+    0.358
+   ],
+   "pos": [
+    -1.0699999999999998,
+    -0.44,
+    0.358
+   ],
+   "kind": "static",
+   "material": "table_wood",
+   "collision": false
+  },
+  {
+   "name": "runner",
+   "shape": "box",
+   "size": [
+    1.0699999999999998,
+    0.17,
+    0.0008
+   ],
+   "pos": [
+    0,
+    0,
+    0.7608
+   ],
+   "kind": "static",
+   "material": "runner",
+   "collision": false
+  },
+  {
+   "name": "plate_dad",
+   "shape": "cylinder",
+   "size": [
+    0.105,
+    0.004
+   ],
+   "pos": [
+    0.0,
+    0.42,
+    0.764
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "plate_rim_dad",
+   "shape": "cylinder",
+   "size": [
+    0.108,
+    0.0015
+   ],
+   "pos": [
+    0.0,
+    0.42,
+    0.7685
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "plate_in_dad",
+   "shape": "cylinder",
+   "size": [
+    0.084,
+    0.0015
+   ],
+   "pos": [
+    0.0,
+    0.42,
+    0.769
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "glass_dad",
+   "shape": "cylinder",
+   "size": [
+    0.028,
+    0.055
+   ],
+   "pos": [
+    -0.17,
+    0.39999999999999997,
+    0.805
+   ],
+   "kind": "static",
+   "material": "glass",
+   "collision": false
+  },
+  {
+   "name": "cider_dad",
+   "shape": "cylinder",
+   "size": [
+    0.025,
+    0.03
+   ],
+   "pos": [
+    -0.17,
+    0.39999999999999997,
+    0.786
+   ],
+   "kind": "static",
+   "rgba": [
+    0.86,
+    0.48,
+    0.12,
+    0.85
+   ],
+   "collision": false
+  },
+  {
+   "name": "cutlery_dad_0",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    -0.135,
+    0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "cutlery_dad_1",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    0.135,
+    0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "plate_mom",
+   "shape": "cylinder",
+   "size": [
+    0.105,
+    0.004
+   ],
+   "pos": [
+    0.02,
+    -0.42,
+    0.764
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "plate_rim_mom",
+   "shape": "cylinder",
+   "size": [
+    0.108,
+    0.0015
+   ],
+   "pos": [
+    0.02,
+    -0.42,
+    0.7685
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "plate_in_mom",
+   "shape": "cylinder",
+   "size": [
+    0.084,
+    0.0015
+   ],
+   "pos": [
+    0.02,
+    -0.42,
+    0.769
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "glass_mom",
+   "shape": "cylinder",
+   "size": [
+    0.028,
+    0.055
+   ],
+   "pos": [
+    -0.15000000000000002,
+    -0.39999999999999997,
+    0.805
+   ],
+   "kind": "static",
+   "material": "glass",
+   "collision": false
+  },
+  {
+   "name": "cider_mom",
+   "shape": "cylinder",
+   "size": [
+    0.025,
+    0.03
+   ],
+   "pos": [
+    -0.15000000000000002,
+    -0.39999999999999997,
+    0.786
+   ],
+   "kind": "static",
+   "rgba": [
+    0.86,
+    0.48,
+    0.12,
+    0.85
+   ],
+   "collision": false
+  },
+  {
+   "name": "cutlery_mom_0",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    -0.115,
+    -0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "cutlery_mom_1",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    0.155,
+    -0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "plate_aunt",
+   "shape": "cylinder",
+   "size": [
+    0.105,
+    0.004
+   ],
+   "pos": [
+    0.38,
+    0.42,
+    0.764
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "plate_rim_aunt",
+   "shape": "cylinder",
+   "size": [
+    0.108,
+    0.0015
+   ],
+   "pos": [
+    0.38,
+    0.42,
+    0.7685
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "plate_in_aunt",
+   "shape": "cylinder",
+   "size": [
+    0.084,
+    0.0015
+   ],
+   "pos": [
+    0.38,
+    0.42,
+    0.769
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "glass_aunt",
+   "shape": "cylinder",
+   "size": [
+    0.028,
+    0.055
+   ],
+   "pos": [
+    0.21,
+    0.39999999999999997,
+    0.805
+   ],
+   "kind": "static",
+   "material": "glass",
+   "collision": false
+  },
+  {
+   "name": "cider_aunt",
+   "shape": "cylinder",
+   "size": [
+    0.025,
+    0.03
+   ],
+   "pos": [
+    0.21,
+    0.39999999999999997,
+    0.786
+   ],
+   "kind": "static",
+   "rgba": [
+    0.86,
+    0.48,
+    0.12,
+    0.85
+   ],
+   "collision": false
+  },
+  {
+   "name": "cutlery_aunt_0",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    0.245,
+    0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "cutlery_aunt_1",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    0.515,
+    0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "plate_kid",
+   "shape": "cylinder",
+   "size": [
+    0.105,
+    0.004
+   ],
+   "pos": [
+    0.38,
+    -0.42,
+    0.764
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "plate_rim_kid",
+   "shape": "cylinder",
+   "size": [
+    0.108,
+    0.0015
+   ],
+   "pos": [
+    0.38,
+    -0.42,
+    0.7685
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "plate_in_kid",
+   "shape": "cylinder",
+   "size": [
+    0.084,
+    0.0015
+   ],
+   "pos": [
+    0.38,
+    -0.42,
+    0.769
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "glass_kid",
+   "shape": "cylinder",
+   "size": [
+    0.028,
+    0.055
+   ],
+   "pos": [
+    0.21,
+    -0.39999999999999997,
+    0.805
+   ],
+   "kind": "static",
+   "material": "glass",
+   "collision": false
+  },
+  {
+   "name": "cider_kid",
+   "shape": "cylinder",
+   "size": [
+    0.025,
+    0.03
+   ],
+   "pos": [
+    0.21,
+    -0.39999999999999997,
+    0.786
+   ],
+   "kind": "static",
+   "rgba": [
+    0.86,
+    0.48,
+    0.12,
+    0.85
+   ],
+   "collision": false
+  },
+  {
+   "name": "cutlery_kid_0",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    0.245,
+    -0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "cutlery_kid_1",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    0.515,
+    -0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "plate_grandma",
+   "shape": "cylinder",
+   "size": [
+    0.105,
+    0.004
+   ],
+   "pos": [
+    -0.58,
+    -0.42,
+    0.764
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "plate_rim_grandma",
+   "shape": "cylinder",
+   "size": [
+    0.108,
+    0.0015
+   ],
+   "pos": [
+    -0.58,
+    -0.42,
+    0.7685
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "plate_in_grandma",
+   "shape": "cylinder",
+   "size": [
+    0.084,
+    0.0015
+   ],
+   "pos": [
+    -0.58,
+    -0.42,
+    0.769
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "glass_grandma",
+   "shape": "cylinder",
+   "size": [
+    0.028,
+    0.055
+   ],
+   "pos": [
+    -0.75,
+    -0.39999999999999997,
+    0.805
+   ],
+   "kind": "static",
+   "material": "glass",
+   "collision": false
+  },
+  {
+   "name": "cider_grandma",
+   "shape": "cylinder",
+   "size": [
+    0.025,
+    0.03
+   ],
+   "pos": [
+    -0.75,
+    -0.39999999999999997,
+    0.786
+   ],
+   "kind": "static",
+   "rgba": [
+    0.86,
+    0.48,
+    0.12,
+    0.85
+   ],
+   "collision": false
+  },
+  {
+   "name": "cutlery_grandma_0",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    -0.715,
+    -0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "cutlery_grandma_1",
+   "shape": "box",
+   "size": [
+    0.008,
+    0.06,
+    0.0015
+   ],
+   "pos": [
+    -0.44499999999999995,
+    -0.42,
+    0.7615
+   ],
+   "kind": "static",
+   "material": "silver",
+   "collision": false
+  },
+  {
+   "name": "pumpkin0",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.054
+   ],
+   "pos": [
+    -0.95,
+    0.05,
+    0.8125
+   ],
+   "kind": "static",
+   "rgba": [
+    0.92,
+    0.45,
+    0.1,
+    1
+   ],
+   "collision": false
+  },
+  {
+   "name": "pumpkin_stem0",
+   "shape": "cylinder",
+   "size": [
+    0.008,
+    0.014
+   ],
+   "pos": [
+    -0.95,
+    0.05,
+    0.8665
+   ],
+   "kind": "static",
+   "rgba": [
+    0.35,
+    0.25,
+    0.1,
+    1
+   ],
+   "collision": false
+  },
+  {
+   "name": "pumpkin1",
+   "shape": "ellipsoid",
+   "size": [
+    0.055,
+    0.055,
+    0.039599999999999996
+   ],
+   "pos": [
+    -1.02,
+    -0.1,
+    0.7985
+   ],
+   "kind": "static",
+   "rgba": [
+    0.95,
+    0.62,
+    0.2,
+    1
+   ],
+   "collision": false
+  },
+  {
+   "name": "pumpkin_stem1",
+   "shape": "cylinder",
+   "size": [
+    0.008,
+    0.014
+   ],
+   "pos": [
+    -1.02,
+    -0.1,
+    0.8381000000000001
+   ],
+   "kind": "static",
+   "rgba": [
+    0.35,
+    0.25,
+    0.1,
+    1
+   ],
+   "collision": false
+  },
+  {
+   "name": "pumpkin2",
+   "shape": "ellipsoid",
+   "size": [
+    0.045,
+    0.045,
+    0.0324
+   ],
+   "pos": [
+    -0.86,
+    -0.06,
+    0.7915
+   ],
+   "kind": "static",
+   "rgba": [
+    0.96,
+    0.9,
+    0.78,
+    1
+   ],
+   "collision": false
+  },
+  {
+   "name": "pumpkin_stem2",
+   "shape": "cylinder",
+   "size": [
+    0.008,
+    0.014
+   ],
+   "pos": [
+    -0.86,
+    -0.06,
+    0.8239
+   ],
+   "kind": "static",
+   "rgba": [
+    0.35,
+    0.25,
+    0.1,
+    1
+   ],
+   "collision": false
+  },
+  {
+   "name": "platter",
+   "shape": "ellipsoid",
+   "size": [
+    0.19,
+    0.13,
+    0.012
+   ],
+   "pos": [
+    -0.55,
+    0.02,
+    0.77
+   ],
+   "kind": "static",
+   "material": "china",
+   "collision": false
+  },
+  {
+   "name": "turkey",
+   "shape": "ellipsoid",
+   "size": [
+    0.12,
+    0.085,
+    0.065
+   ],
+   "pos": [
+    -0.55,
+    0.02,
+    0.825
+   ],
+   "kind": "static",
+   "material": "roast",
+   "collision": false
+  },
+  {
+   "name": "drum1",
+   "shape": "capsule",
+   "size": [
+    0.026
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "rgba": [
+    0.58,
+    0.29,
+    0.11,
+    1
+   ],
+   "collision": false,
+   "fromto": [
+    -0.47,
+    0.07,
+    0.8200000000000001,
+    -0.41,
+    0.09,
+    0.835
+   ]
+  },
+  {
+   "name": "drum_bone1",
+   "shape": "capsule",
+   "size": [
+    0.008
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "rgba": [
+    0.95,
+    0.92,
+    0.85,
+    1
+   ],
+   "collision": false,
+   "fromto": [
+    -0.41,
+    0.09,
+    0.835,
+    -0.385,
+    0.095,
+    0.84
+   ]
+  },
+  {
+   "name": "drum-1",
+   "shape": "capsule",
+   "size": [
+    0.026
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "rgba": [
+    0.58,
+    0.29,
+    0.11,
+    1
+   ],
+   "collision": false,
+   "fromto": [
+    -0.47,
+    -0.07,
+    0.8200000000000001,
+    -0.41,
+    -0.09,
+    0.835
+   ]
+  },
+  {
+   "name": "drum_bone-1",
+   "shape": "capsule",
+   "size": [
+    0.008
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "kind": "static",
+   "rgba": [
+    0.95,
+    0.92,
+    0.85,
+    1
+   ],
+   "collision": false,
+   "fromto": [
+    -0.41,
+    -0.09,
+    0.835,
+    -0.385,
+    -0.095,
+    0.84
+   ]
+  },
+  {
+   "name": "candle_holder0",
+   "shape": "cylinder",
+   "size": [
+    0.026,
+    0.008
+   ],
+   "pos": [
+    -0.25,
+    0.1,
+    0.768
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "candle0",
+   "shape": "cylinder",
+   "size": [
+    0.014,
+    0.045
+   ],
+   "pos": [
+    -0.25,
+    0.1,
+    0.8210000000000001
+   ],
+   "kind": "static",
+   "material": "wax",
+   "collision": false
+  },
+  {
+   "name": "flame0",
+   "shape": "ellipsoid",
+   "size": [
+    0.006,
+    0.006,
+    0.013
+   ],
+   "pos": [
+    -0.25,
+    0.1,
+    0.878
+   ],
+   "kind": "static",
+   "material": "flame",
+   "collision": false
+  },
+  {
+   "name": "candle_holder1",
+   "shape": "cylinder",
+   "size": [
+    0.026,
+    0.008
+   ],
+   "pos": [
+    -0.25,
+    -0.12,
+    0.768
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "candle1",
+   "shape": "cylinder",
+   "size": [
+    0.014,
+    0.055
+   ],
+   "pos": [
+    -0.25,
+    -0.12,
+    0.8310000000000001
+   ],
+   "kind": "static",
+   "material": "wax",
+   "collision": false
+  },
+  {
+   "name": "flame1",
+   "shape": "ellipsoid",
+   "size": [
+    0.006,
+    0.006,
+    0.013
+   ],
+   "pos": [
+    -0.25,
+    -0.12,
+    0.898
+   ],
+   "kind": "static",
+   "material": "flame",
+   "collision": false
+  },
+  {
+   "name": "candle_holder2",
+   "shape": "cylinder",
+   "size": [
+    0.026,
+    0.008
+   ],
+   "pos": [
+    0.64,
+    0.15,
+    0.768
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "candle2",
+   "shape": "cylinder",
+   "size": [
+    0.014,
+    0.045
+   ],
+   "pos": [
+    0.64,
+    0.15,
+    0.8210000000000001
+   ],
+   "kind": "static",
+   "material": "wax",
+   "collision": false
+  },
+  {
+   "name": "flame2",
+   "shape": "ellipsoid",
+   "size": [
+    0.006,
+    0.006,
+    0.013
+   ],
+   "pos": [
+    0.64,
+    0.15,
+    0.878
+   ],
+   "kind": "static",
+   "material": "flame",
+   "collision": false
+  },
+  {
+   "name": "candle_holder3",
+   "shape": "cylinder",
+   "size": [
+    0.026,
+    0.008
+   ],
+   "pos": [
+    0.64,
+    -0.14,
+    0.768
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "candle3",
+   "shape": "cylinder",
+   "size": [
+    0.014,
+    0.055
+   ],
+   "pos": [
+    0.64,
+    -0.14,
+    0.8310000000000001
+   ],
+   "kind": "static",
+   "material": "wax",
+   "collision": false
+  },
+  {
+   "name": "flame3",
+   "shape": "ellipsoid",
+   "size": [
+    0.006,
+    0.006,
+    0.013
+   ],
+   "pos": [
+    0.64,
+    -0.14,
+    0.898
+   ],
+   "kind": "static",
+   "material": "flame",
+   "collision": false
+  },
+  {
+   "name": "candle_holder4",
+   "shape": "cylinder",
+   "size": [
+    0.026,
+    0.008
+   ],
+   "pos": [
+    -0.8,
+    0.18,
+    0.768
+   ],
+   "kind": "static",
+   "material": "gold_trim",
+   "collision": false
+  },
+  {
+   "name": "candle4",
+   "shape": "cylinder",
+   "size": [
+    0.014,
+    0.045
+   ],
+   "pos": [
+    -0.8,
+    0.18,
+    0.8210000000000001
+   ],
+   "kind": "static",
+   "material": "wax",
+   "collision": false
+  },
+  {
+   "name": "flame4",
+   "shape": "ellipsoid",
+   "size": [
+    0.006,
+    0.006,
+    0.013
+   ],
+   "pos": [
+    -0.8,
+    0.18,
+    0.878
+   ],
+   "kind": "static",
+   "material": "flame",
+   "collision": false
+  },
+  {
+   "name": "butter",
+   "shape": "none",
+   "pos": [
+    0.255,
+    0.035,
+    0.76
+   ],
+   "kind": "dynamic",
+   "mass": 0.05,
+   "children": [
+    {
+     "name": "butter_tray",
+     "shape": "box",
+     "size": [
+      0.055,
+      0.032,
+      0.005
+     ],
+     "pos": [
+      0,
+      0,
+      0.005
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.03,
+     "material": "china"
+    },
+    {
+     "name": "butter_rim",
+     "shape": "box",
+     "size": [
+      0.058,
+      0.035,
+      0.0015
+     ],
+     "pos": [
+      0,
+      0,
+      0.0095
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.005,
+     "material": "gold_trim"
+    },
+    {
+     "name": "butter_stick",
+     "shape": "box",
+     "size": [
+      0.034,
+      0.014,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.022
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.02,
+     "rgba": [
+      0.99,
+      0.86,
+      0.42,
+      1
+     ]
+    },
+    {
+     "name": "butter_pat",
+     "shape": "box",
+     "size": [
+      0.008,
+      0.006,
+      0.0025
+     ],
+     "pos": [
+      0.04,
+      0.012,
+      0.0125
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.002,
+     "rgba": [
+      0.99,
+      0.86,
+      0.42,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "prop"
+   ]
+  },
+  {
+   "name": "rolls",
+   "shape": "none",
+   "pos": [
+    0.245,
+    0.19,
+    0.76
+   ],
+   "kind": "dynamic",
+   "mass": 0.05,
+   "children": [
+    {
+     "name": "rolls_basket",
+     "shape": "box",
+     "size": [
+      0.05,
+      0.036,
+      0.016
+     ],
+     "pos": [
+      0,
+      0,
+      0.016
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.03,
+     "material": "wicker"
+    },
+    {
+     "name": "rolls_cloth",
+     "shape": "box",
+     "size": [
+      0.052,
+      0.038,
+      0.002
+     ],
+     "pos": [
+      0,
+      0,
+      0.031
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.003,
+     "rgba": [
+      0.95,
+      0.92,
+      0.85,
+      1
+     ]
+    },
+    {
+     "name": "roll_a",
+     "shape": "ellipsoid",
+     "size": [
+      0.022,
+      0.017,
+      0.013
+     ],
+     "pos": [
+      -0.02,
+      -0.006,
+      0.04
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.008,
+     "rgba": [
+      0.8,
+      0.52,
+      0.24,
+      1
+     ]
+    },
+    {
+     "name": "roll_b",
+     "shape": "ellipsoid",
+     "size": [
+      0.022,
+      0.017,
+      0.013
+     ],
+     "pos": [
+      0.02,
+      0.008,
+      0.041
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.008,
+     "rgba": [
+      0.83,
+      0.55,
+      0.26,
+      1
+     ]
+    },
+    {
+     "name": "roll_c",
+     "shape": "ellipsoid",
+     "size": [
+      0.02,
+      0.016,
+      0.012
+     ],
+     "pos": [
+      0.0,
+      -0.012,
+      0.05
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.006,
+     "rgba": [
+      0.78,
+      0.5,
+      0.22,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "prop"
+   ]
+  },
+  {
+   "name": "gravy",
+   "shape": "none",
+   "pos": [
+    0.265,
+    -0.12,
+    0.76
+   ],
+   "kind": "dynamic",
+   "mass": 0.05,
+   "children": [
+    {
+     "name": "gravy_foot",
+     "shape": "cylinder",
+     "size": [
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0,
+      0.004
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.01,
+     "material": "china"
+    },
+    {
+     "name": "gravy_bowl",
+     "shape": "ellipsoid",
+     "size": [
+      0.05,
+      0.028,
+      0.022
+     ],
+     "pos": [
+      0,
+      0,
+      0.026
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.04,
+     "material": "china"
+    },
+    {
+     "name": "gravy_sauce",
+     "shape": "ellipsoid",
+     "size": [
+      0.042,
+      0.022,
+      0.004
+     ],
+     "pos": [
+      0,
+      0,
+      0.044
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.002,
+     "rgba": [
+      0.45,
+      0.25,
+      0.1,
+      1
+     ]
+    },
+    {
+     "name": "gravy_spout",
+     "shape": "capsule",
+     "size": [
+      0.007
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.002,
+     "material": "china",
+     "fromto": [
+      0.045,
+      0,
+      0.04,
+      0.064,
+      0,
+      0.05
+     ]
+    },
+    {
+     "name": "gravy_handle",
+     "shape": "capsule",
+     "size": [
+      0.0045
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.002,
+     "material": "china",
+     "fromto": [
+      -0.046,
+      0,
+      0.04,
+      -0.064,
+      0,
+      0.034
+     ]
+    }
+   ],
+   "tags": [
+    "prop"
+   ]
+  },
+  {
+   "name": "cranberry",
+   "shape": "none",
+   "pos": [
+    0.36,
+    0.14,
+    0.76
+   ],
+   "kind": "dynamic",
+   "mass": 0.05,
+   "children": [
+    {
+     "name": "cran_dish",
+     "shape": "cylinder",
+     "size": [
+      0.036,
+      0.011
+     ],
+     "pos": [
+      0,
+      0,
+      0.011
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.04,
+     "material": "china"
+    },
+    {
+     "name": "cran_rim",
+     "shape": "cylinder",
+     "size": [
+      0.0375,
+      0.0015
+     ],
+     "pos": [
+      0,
+      0,
+      0.0215
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.002,
+     "material": "gold_trim"
+    },
+    {
+     "name": "cran_jelly",
+     "shape": "cylinder",
+     "size": [
+      0.026,
+      0.012
+     ],
+     "pos": [
+      0,
+      0,
+      0.03
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.01,
+     "material": "jelly"
+    }
+   ],
+   "tags": [
+    "prop"
+   ]
+  },
+  {
+   "name": "phone",
+   "shape": "none",
+   "pos": [
+    0.4,
+    -0.1,
+    0.76
+   ],
+   "kind": "dynamic",
+   "mass": 0.05,
+   "children": [
+    {
+     "name": "phone_body",
+     "shape": "box",
+     "size": [
+      0.06,
+      0.029,
+      0.0042
+     ],
+     "pos": [
+      0,
+      0,
+      0.0042
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.05,
+     "rgba": [
+      0.1,
+      0.1,
+      0.12,
+      1
+     ]
+    },
+    {
+     "name": "phone_screen",
+     "shape": "box",
+     "size": [
+      0.056,
+      0.026,
+      0.0004
+     ],
+     "pos": [
+      0,
+      0,
+      0.0086
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.001,
+     "material": "phone_screen"
+    }
+   ],
+   "tags": [
+    "prop"
+   ]
+  },
+  {
+   "name": "drawing",
+   "shape": "none",
+   "pos": [
+    0.4,
+    -0.8,
+    1.06
+   ],
+   "kind": "dynamic",
+   "mass": 0.012,
+   "children": [
+    {
+     "name": "drawing_panel_a",
+     "shape": "box",
+     "size": [
+      0.002,
+      0.055,
+      0.03
+     ],
+     "pos": [
+      0.013,
+      0,
+      0.027
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.006,
+     "material": "drawing",
+     "euler": [
+      0,
+      -25,
+      0
+     ]
+    },
+    {
+     "name": "drawing_panel_b",
+     "shape": "box",
+     "size": [
+      0.002,
+      0.055,
+      0.03
+     ],
+     "pos": [
+      -0.013,
+      0,
+      0.027
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.006,
+     "material": "drawing",
+     "euler": [
+      0,
+      25,
+      0
+     ]
+    }
+   ],
+   "tags": [
+    "prop"
+   ]
+  },
+  {
+   "name": "napkin",
+   "shape": "none",
+   "pos": [
+    0.37,
+    0.03,
+    0.76
+   ],
+   "kind": "dynamic",
+   "mass": 0.015,
+   "children": [
+    {
+     "name": "napkin_fold",
+     "shape": "box",
+     "size": [
+      0.04,
+      0.04,
+      0.006
+     ],
+     "pos": [
+      0,
+      0,
+      0.006
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.012,
+     "rgba": [
+      0.96,
+      0.93,
+      0.84,
+      1
+     ],
+     "solref": [
+      0.05,
+      1.0
+     ]
+    },
+    {
+     "name": "napkin_band",
+     "shape": "box",
+     "size": [
+      0.008,
+      0.041,
+      0.0065
+     ],
+     "pos": [
+      0,
+      0,
+      0.0065
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.002,
+     "rgba": [
+      0.66,
+      0.08,
+      0.12,
+      1
+     ]
+    },
+    {
+     "name": "napkin_leaf",
+     "shape": "ellipsoid",
+     "size": [
+      0.012,
+      0.007,
+      0.002
+     ],
+     "pos": [
+      0,
+      0.0,
+      0.0135
+     ],
+     "kind": "dynamic",
+     "friction": [
+      0.6,
+      0.005,
+      0.0001
+     ],
+     "contype": 2048,
+     "conaffinity": 2048,
+     "condim": 3,
+     "mass": 0.001,
+     "rgba": [
+      0.86,
+      0.42,
+      0.08,
+      1
+     ]
+    }
+   ],
+   "tags": [
+    "prop"
+   ]
+  },
+  {
+   "name": "hand_dad",
+   "shape": "none",
+   "pos": [
+    0.02,
+    0.97,
+    0.51
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "dad_sleeve",
+     "shape": "capsule",
+     "size": [
+      0.04
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "material": "sleeve_flannel",
+     "collision": false,
+     "fromto": [
+      -0.07,
+      0,
+      -0.012,
+      -0.55,
+      0,
+      -0.03
+     ]
+    },
+    {
+     "name": "dad_cuff",
+     "shape": "capsule",
+     "size": [
+      0.043
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.1,
+      0.08,
+      0.09,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.075,
+      0,
+      -0.012,
+      -0.1,
+      0,
+      -0.014
+     ]
+    },
+    {
+     "name": "dad_wrist",
+     "shape": "capsule",
+     "size": [
+      0.026
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.07,
+      0,
+      -0.01,
+      -0.005,
+      0,
+      -0.008
+     ]
+    },
+    {
+     "name": "dad_palm",
+     "shape": "ellipsoid",
+     "size": [
+      0.052,
+      0.042,
+      0.014
+     ],
+     "pos": [
+      0.03,
+      0,
+      -0.004
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "dad_f0a",
+     "shape": "capsule",
+     "size": [
+      0.0085
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.07,
+      -0.027,
+      -0.002,
+      0.1063,
+      -0.02835,
+      0.002
+     ]
+    },
+    {
+     "name": "dad_f0b",
+     "shape": "capsule",
+     "size": [
+      0.008
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.1063,
+      -0.02835,
+      0.002,
+      0.131545,
+      -0.029160000000000002,
+      0.016
+     ]
+    },
+    {
+     "name": "dad_f1a",
+     "shape": "capsule",
+     "size": [
+      0.0085
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.07,
+      -0.009,
+      -0.002,
+      0.1107,
+      -0.00945,
+      0.002
+     ]
+    },
+    {
+     "name": "dad_f1b",
+     "shape": "capsule",
+     "size": [
+      0.008
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.1107,
+      -0.00945,
+      0.002,
+      0.139005,
+      -0.00972,
+      0.016
+     ]
+    },
+    {
+     "name": "dad_f2a",
+     "shape": "capsule",
+     "size": [
+      0.0085
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.07,
+      0.009,
+      -0.002,
+      0.10850000000000001,
+      0.00945,
+      0.002
+     ]
+    },
+    {
+     "name": "dad_f2b",
+     "shape": "capsule",
+     "size": [
+      0.008
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.10850000000000001,
+      0.00945,
+      0.002,
+      0.135275,
+      0.00972,
+      0.016
+     ]
+    },
+    {
+     "name": "dad_f3a",
+     "shape": "capsule",
+     "size": [
+      0.0085
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.07,
+      0.026,
+      -0.002,
+      0.10190000000000002,
+      0.0273,
+      0.002
+     ]
+    },
+    {
+     "name": "dad_f3b",
+     "shape": "capsule",
+     "size": [
+      0.008
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.10190000000000002,
+      0.0273,
+      0.002,
+      0.12408500000000001,
+      0.02808,
+      0.016
+     ]
+    },
+    {
+     "name": "dad_thumb_a",
+     "shape": "capsule",
+     "size": [
+      0.0105
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.012,
+      -0.03,
+      -0.002,
+      0.04,
+      -0.058,
+      0.006
+     ]
+    },
+    {
+     "name": "dad_thumb_b",
+     "shape": "capsule",
+     "size": [
+      0.0095
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.86,
+      0.66,
+      0.52,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.04,
+      -0.058,
+      0.006,
+      0.068,
+      -0.07,
+      0.016
+     ]
+    },
+    {
+     "name": "dad_watch",
+     "shape": "cylinder",
+     "size": [
+      0.019,
+      0.007
+     ],
+     "pos": [
+      -0.045,
+      0,
+      0.018
+     ],
+     "kind": "static",
+     "rgba": [
+      0.15,
+      0.15,
+      0.17,
+      1
+     ],
+     "collision": false
+    }
+   ],
+   "tags": [
+    "family",
+    "flannel"
+   ]
+  },
+  {
+   "name": "hand_mom",
+   "shape": "none",
+   "pos": [
+    0.04,
+    -0.97,
+    0.51
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "mom_sleeve",
+     "shape": "capsule",
+     "size": [
+      0.0368
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "material": "sleeve_sweater",
+     "collision": false,
+     "fromto": [
+      -0.06440000000000001,
+      0,
+      -0.011040000000000001,
+      -0.55,
+      0,
+      -0.03
+     ]
+    },
+    {
+     "name": "mom_cuff",
+     "shape": "capsule",
+     "size": [
+      0.03956
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.7,
+      0.52,
+      0.18,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.069,
+      0,
+      -0.011040000000000001,
+      -0.09200000000000001,
+      0,
+      -0.01288
+     ]
+    },
+    {
+     "name": "mom_wrist",
+     "shape": "capsule",
+     "size": [
+      0.02392
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.06440000000000001,
+      0,
+      -0.0092,
+      -0.0046,
+      0,
+      -0.00736
+     ]
+    },
+    {
+     "name": "mom_palm",
+     "shape": "ellipsoid",
+     "size": [
+      0.04784,
+      0.03864,
+      0.01288
+     ],
+     "pos": [
+      0.0276,
+      0,
+      -0.00368
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "mom_f0a",
+     "shape": "capsule",
+     "size": [
+      0.00782
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.06440000000000001,
+      -0.02484,
+      -0.00184,
+      0.09779600000000002,
+      -0.026082,
+      0.00184
+     ]
+    },
+    {
+     "name": "mom_f0b",
+     "shape": "capsule",
+     "size": [
+      0.00736
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.09779600000000002,
+      -0.026082,
+      0.00184,
+      0.12102140000000003,
+      -0.026827200000000002,
+      0.01472
+     ]
+    },
+    {
+     "name": "mom_f1a",
+     "shape": "capsule",
+     "size": [
+      0.00782
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.06440000000000001,
+      -0.00828,
+      -0.00184,
+      0.10184400000000002,
+      -0.008694,
+      0.00184
+     ]
+    },
+    {
+     "name": "mom_f1b",
+     "shape": "capsule",
+     "size": [
+      0.00736
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.10184400000000002,
+      -0.008694,
+      0.00184,
+      0.12788460000000001,
+      -0.0089424,
+      0.01472
+     ]
+    },
+    {
+     "name": "mom_f2a",
+     "shape": "capsule",
+     "size": [
+      0.00782
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.06440000000000001,
+      0.00828,
+      -0.00184,
+      0.09982000000000002,
+      0.008694,
+      0.00184
+     ]
+    },
+    {
+     "name": "mom_f2b",
+     "shape": "capsule",
+     "size": [
+      0.00736
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.09982000000000002,
+      0.008694,
+      0.00184,
+      0.12445300000000002,
+      0.0089424,
+      0.01472
+     ]
+    },
+    {
+     "name": "mom_f3a",
+     "shape": "capsule",
+     "size": [
+      0.00782
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.06440000000000001,
+      0.02392,
+      -0.00184,
+      0.09374800000000003,
+      0.025116000000000003,
+      0.00184
+     ]
+    },
+    {
+     "name": "mom_f3b",
+     "shape": "capsule",
+     "size": [
+      0.00736
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.09374800000000003,
+      0.025116000000000003,
+      0.00184,
+      0.11415820000000003,
+      0.0258336,
+      0.01472
+     ]
+    },
+    {
+     "name": "mom_thumb_a",
+     "shape": "capsule",
+     "size": [
+      0.00966
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.011040000000000001,
+      0.0276,
+      -0.00184,
+      0.0368,
+      0.053360000000000005,
+      0.005520000000000001
+     ]
+    },
+    {
+     "name": "mom_thumb_b",
+     "shape": "capsule",
+     "size": [
+      0.00874
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.93,
+      0.76,
+      0.64,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0368,
+      0.053360000000000005,
+      0.005520000000000001,
+      0.06256,
+      0.06440000000000001,
+      0.01472
+     ]
+    }
+   ],
+   "tags": [
+    "family",
+    "sweater"
+   ]
+  },
+  {
+   "name": "hand_aunt",
+   "shape": "none",
+   "pos": [
+    0.4,
+    0.97,
+    0.51
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "aunt_sleeve",
+     "shape": "capsule",
+     "size": [
+      0.0376
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "material": "sleeve_olive",
+     "collision": false,
+     "fromto": [
+      -0.0658,
+      0,
+      -0.01128,
+      -0.55,
+      0,
+      -0.03
+     ]
+    },
+    {
+     "name": "aunt_cuff",
+     "shape": "capsule",
+     "size": [
+      0.04042
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.3,
+      0.34,
+      0.18,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.0705,
+      0,
+      -0.01128,
+      -0.094,
+      0,
+      -0.01316
+     ]
+    },
+    {
+     "name": "aunt_wrist",
+     "shape": "capsule",
+     "size": [
+      0.024439999999999996
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.0658,
+      0,
+      -0.0094,
+      -0.0047,
+      0,
+      -0.00752
+     ]
+    },
+    {
+     "name": "aunt_palm",
+     "shape": "ellipsoid",
+     "size": [
+      0.04887999999999999,
+      0.03948,
+      0.01316
+     ],
+     "pos": [
+      0.028199999999999996,
+      0,
+      -0.00376
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "aunt_f0a",
+     "shape": "capsule",
+     "size": [
+      0.00799
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0658,
+      -0.02538,
+      -0.00188,
+      0.09992200000000001,
+      -0.026649000000000003,
+      0.00188
+     ]
+    },
+    {
+     "name": "aunt_f0b",
+     "shape": "capsule",
+     "size": [
+      0.00752
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.09992200000000001,
+      -0.026649000000000003,
+      0.00188,
+      0.1236523,
+      -0.0274104,
+      0.01504
+     ]
+    },
+    {
+     "name": "aunt_f1a",
+     "shape": "capsule",
+     "size": [
+      0.00799
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0658,
+      -0.008459999999999999,
+      -0.00188,
+      0.104058,
+      -0.008882999999999999,
+      0.00188
+     ]
+    },
+    {
+     "name": "aunt_f1b",
+     "shape": "capsule",
+     "size": [
+      0.00752
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.104058,
+      -0.008882999999999999,
+      0.00188,
+      0.1306647,
+      -0.009136799999999999,
+      0.01504
+     ]
+    },
+    {
+     "name": "aunt_f2a",
+     "shape": "capsule",
+     "size": [
+      0.00799
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0658,
+      0.008459999999999999,
+      -0.00188,
+      0.10199,
+      0.008882999999999999,
+      0.00188
+     ]
+    },
+    {
+     "name": "aunt_f2b",
+     "shape": "capsule",
+     "size": [
+      0.00752
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.10199,
+      0.008882999999999999,
+      0.00188,
+      0.1271585,
+      0.009136799999999999,
+      0.01504
+     ]
+    },
+    {
+     "name": "aunt_f3a",
+     "shape": "capsule",
+     "size": [
+      0.00799
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0658,
+      0.024439999999999996,
+      -0.00188,
+      0.095786,
+      0.025661999999999997,
+      0.00188
+     ]
+    },
+    {
+     "name": "aunt_f3b",
+     "shape": "capsule",
+     "size": [
+      0.00752
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.095786,
+      0.025661999999999997,
+      0.00188,
+      0.11663989999999999,
+      0.026395199999999997,
+      0.01504
+     ]
+    },
+    {
+     "name": "aunt_thumb_a",
+     "shape": "capsule",
+     "size": [
+      0.00987
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.01128,
+      -0.028199999999999996,
+      -0.00188,
+      0.0376,
+      -0.05452,
+      0.00564
+     ]
+    },
+    {
+     "name": "aunt_thumb_b",
+     "shape": "capsule",
+     "size": [
+      0.008929999999999999
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.55,
+      0.38,
+      0.27,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0376,
+      -0.05452,
+      0.00564,
+      0.06392,
+      -0.0658,
+      0.01504
+     ]
+    }
+   ],
+   "tags": [
+    "family",
+    "olive"
+   ]
+  },
+  {
+   "name": "hand_kid",
+   "shape": "none",
+   "pos": [
+    0.4,
+    -0.97,
+    0.51
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "kid_sleeve",
+     "shape": "capsule",
+     "size": [
+      0.0288
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "material": "sleeve_hoodie",
+     "collision": false,
+     "fromto": [
+      -0.0504,
+      0,
+      -0.00864,
+      -0.55,
+      0,
+      -0.03
+     ]
+    },
+    {
+     "name": "kid_cuff",
+     "shape": "capsule",
+     "size": [
+      0.030959999999999998
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.06,
+      0.38,
+      0.42,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.054,
+      0,
+      -0.00864,
+      -0.072,
+      0,
+      -0.01008
+     ]
+    },
+    {
+     "name": "kid_wrist",
+     "shape": "capsule",
+     "size": [
+      0.018719999999999997
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.0504,
+      0,
+      -0.0072,
+      -0.0036,
+      0,
+      -0.0057599999999999995
+     ]
+    },
+    {
+     "name": "kid_palm",
+     "shape": "ellipsoid",
+     "size": [
+      0.037439999999999994,
+      0.03024,
+      0.01008
+     ],
+     "pos": [
+      0.021599999999999998,
+      0,
+      -0.0028799999999999997
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "kid_f0a",
+     "shape": "capsule",
+     "size": [
+      0.0061200000000000004
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0504,
+      -0.01944,
+      -0.0014399999999999999,
+      0.076536,
+      -0.020412,
+      0.0014399999999999999
+     ]
+    },
+    {
+     "name": "kid_f0b",
+     "shape": "capsule",
+     "size": [
+      0.0057599999999999995
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.076536,
+      -0.020412,
+      0.0014399999999999999,
+      0.0947124,
+      -0.0209952,
+      0.011519999999999999
+     ]
+    },
+    {
+     "name": "kid_f1a",
+     "shape": "capsule",
+     "size": [
+      0.0061200000000000004
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0504,
+      -0.00648,
+      -0.0014399999999999999,
+      0.079704,
+      -0.006804,
+      0.0014399999999999999
+     ]
+    },
+    {
+     "name": "kid_f1b",
+     "shape": "capsule",
+     "size": [
+      0.0057599999999999995
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.079704,
+      -0.006804,
+      0.0014399999999999999,
+      0.1000836,
+      -0.0069984,
+      0.011519999999999999
+     ]
+    },
+    {
+     "name": "kid_f2a",
+     "shape": "capsule",
+     "size": [
+      0.0061200000000000004
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0504,
+      0.00648,
+      -0.0014399999999999999,
+      0.07812000000000001,
+      0.006804,
+      0.0014399999999999999
+     ]
+    },
+    {
+     "name": "kid_f2b",
+     "shape": "capsule",
+     "size": [
+      0.0057599999999999995
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.07812000000000001,
+      0.006804,
+      0.0014399999999999999,
+      0.09739800000000001,
+      0.0069984,
+      0.011519999999999999
+     ]
+    },
+    {
+     "name": "kid_f3a",
+     "shape": "capsule",
+     "size": [
+      0.0061200000000000004
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0504,
+      0.018719999999999997,
+      -0.0014399999999999999,
+      0.073368,
+      0.019655999999999996,
+      0.0014399999999999999
+     ]
+    },
+    {
+     "name": "kid_f3b",
+     "shape": "capsule",
+     "size": [
+      0.0057599999999999995
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.073368,
+      0.019655999999999996,
+      0.0014399999999999999,
+      0.08934120000000001,
+      0.0202176,
+      0.011519999999999999
+     ]
+    },
+    {
+     "name": "kid_thumb_a",
+     "shape": "capsule",
+     "size": [
+      0.00756
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.00864,
+      0.021599999999999998,
+      -0.0014399999999999999,
+      0.0288,
+      0.04176,
+      0.00432
+     ]
+    },
+    {
+     "name": "kid_thumb_b",
+     "shape": "capsule",
+     "size": [
+      0.00684
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.8,
+      0.58,
+      0.44,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0288,
+      0.04176,
+      0.00432,
+      0.048960000000000004,
+      0.0504,
+      0.011519999999999999
+     ]
+    }
+   ],
+   "tags": [
+    "family",
+    "hoodie"
+   ]
+  },
+  {
+   "name": "hand_grandma",
+   "shape": "none",
+   "pos": [
+    -0.55,
+    -0.97,
+    0.51
+   ],
+   "kind": "static",
+   "children": [
+    {
+     "name": "grandma_sleeve",
+     "shape": "capsule",
+     "size": [
+      0.036000000000000004
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "material": "sleeve_cardigan",
+     "collision": false,
+     "fromto": [
+      -0.06300000000000001,
+      0,
+      -0.0108,
+      -0.55,
+      0,
+      -0.03
+     ]
+    },
+    {
+     "name": "grandma_cuff",
+     "shape": "capsule",
+     "size": [
+      0.0387
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.62,
+      0.42,
+      0.56,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.0675,
+      0,
+      -0.0108,
+      -0.09000000000000001,
+      0,
+      -0.0126
+     ]
+    },
+    {
+     "name": "grandma_wrist",
+     "shape": "capsule",
+     "size": [
+      0.0234
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      -0.06300000000000001,
+      0,
+      -0.009000000000000001,
+      -0.0045000000000000005,
+      0,
+      -0.007200000000000001
+     ]
+    },
+    {
+     "name": "grandma_palm",
+     "shape": "ellipsoid",
+     "size": [
+      0.0468,
+      0.0378,
+      0.0126
+     ],
+     "pos": [
+      0.027,
+      0,
+      -0.0036000000000000003
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "grandma_f0a",
+     "shape": "capsule",
+     "size": [
+      0.0076500000000000005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.06300000000000001,
+      -0.0243,
+      -0.0018000000000000002,
+      0.09567000000000002,
+      -0.025515,
+      0.0018000000000000002
+     ]
+    },
+    {
+     "name": "grandma_f0b",
+     "shape": "capsule",
+     "size": [
+      0.007200000000000001
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.09567000000000002,
+      -0.025515,
+      0.0018000000000000002,
+      0.11839050000000002,
+      -0.026244,
+      0.014400000000000001
+     ]
+    },
+    {
+     "name": "grandma_f1a",
+     "shape": "capsule",
+     "size": [
+      0.0076500000000000005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.06300000000000001,
+      -0.0081,
+      -0.0018000000000000002,
+      0.09963000000000002,
+      -0.008505,
+      0.0018000000000000002
+     ]
+    },
+    {
+     "name": "grandma_f1b",
+     "shape": "capsule",
+     "size": [
+      0.007200000000000001
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.09963000000000002,
+      -0.008505,
+      0.0018000000000000002,
+      0.1251045,
+      -0.008748,
+      0.014400000000000001
+     ]
+    },
+    {
+     "name": "grandma_f2a",
+     "shape": "capsule",
+     "size": [
+      0.0076500000000000005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.06300000000000001,
+      0.0081,
+      -0.0018000000000000002,
+      0.09765000000000001,
+      0.008505,
+      0.0018000000000000002
+     ]
+    },
+    {
+     "name": "grandma_f2b",
+     "shape": "capsule",
+     "size": [
+      0.007200000000000001
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.09765000000000001,
+      0.008505,
+      0.0018000000000000002,
+      0.12174750000000002,
+      0.008748,
+      0.014400000000000001
+     ]
+    },
+    {
+     "name": "grandma_f3a",
+     "shape": "capsule",
+     "size": [
+      0.0076500000000000005
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.06300000000000001,
+      0.0234,
+      -0.0018000000000000002,
+      0.09171000000000001,
+      0.02457,
+      0.0018000000000000002
+     ]
+    },
+    {
+     "name": "grandma_f3b",
+     "shape": "capsule",
+     "size": [
+      0.007200000000000001
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.09171000000000001,
+      0.02457,
+      0.0018000000000000002,
+      0.11167650000000001,
+      0.025272000000000003,
+      0.014400000000000001
+     ]
+    },
+    {
+     "name": "grandma_thumb_a",
+     "shape": "capsule",
+     "size": [
+      0.00945
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.0108,
+      0.027,
+      -0.0018000000000000002,
+      0.036000000000000004,
+      0.0522,
+      0.0054
+     ]
+    },
+    {
+     "name": "grandma_thumb_b",
+     "shape": "capsule",
+     "size": [
+      0.00855
+     ],
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "kind": "static",
+     "rgba": [
+      0.95,
+      0.82,
+      0.74,
+      1
+     ],
+     "collision": false,
+     "fromto": [
+      0.036000000000000004,
+      0.0522,
+      0.0054,
+      0.061200000000000004,
+      0.06300000000000001,
+      0.014400000000000001
+     ]
+    },
+    {
+     "name": "grandma_pearl0",
+     "shape": "sphere",
+     "size": [
+      0.0055
+     ],
+     "pos": [
+      -0.0468,
+      0.0252,
+      -0.009000000000000001
+     ],
+     "kind": "static",
+     "rgba": [
+      0.96,
+      0.94,
+      0.88,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "grandma_pearl1",
+     "shape": "sphere",
+     "size": [
+      0.0055
+     ],
+     "pos": [
+      -0.0468,
+      0.017819090885900998,
+      0.008819090885900997
+     ],
+     "kind": "static",
+     "rgba": [
+      0.96,
+      0.94,
+      0.88,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "grandma_pearl2",
+     "shape": "sphere",
+     "size": [
+      0.0055
+     ],
+     "pos": [
+      -0.0468,
+      1.543054966925665e-18,
+      0.0162
+     ],
+     "kind": "static",
+     "rgba": [
+      0.96,
+      0.94,
+      0.88,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "grandma_pearl3",
+     "shape": "sphere",
+     "size": [
+      0.0055
+     ],
+     "pos": [
+      -0.0468,
+      -0.017819090885900998,
+      0.008819090885900997
+     ],
+     "kind": "static",
+     "rgba": [
+      0.96,
+      0.94,
+      0.88,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "grandma_pearl4",
+     "shape": "sphere",
+     "size": [
+      0.0055
+     ],
+     "pos": [
+      -0.0468,
+      -0.0252,
+      -0.008999999999999998
+     ],
+     "kind": "static",
+     "rgba": [
+      0.96,
+      0.94,
+      0.88,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "grandma_pearl5",
+     "shape": "sphere",
+     "size": [
+      0.0055
+     ],
+     "pos": [
+      -0.0468,
+      -0.017819090885901,
+      -0.026819090885901
+     ],
+     "kind": "static",
+     "rgba": [
+      0.96,
+      0.94,
+      0.88,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "grandma_pearl6",
+     "shape": "sphere",
+     "size": [
+      0.0055
+     ],
+     "pos": [
+      -0.0468,
+      -4.6291649007769946e-18,
+      -0.0342
+     ],
+     "kind": "static",
+     "rgba": [
+      0.96,
+      0.94,
+      0.88,
+      1
+     ],
+     "collision": false
+    },
+    {
+     "name": "grandma_pearl7",
+     "shape": "sphere",
+     "size": [
+      0.0055
+     ],
+     "pos": [
+      -0.0468,
+      0.017819090885900994,
+      -0.026819090885901002
+     ],
+     "kind": "static",
+     "rgba": [
+      0.96,
+      0.94,
+      0.88,
+      1
+     ],
+     "collision": false
+    }
+   ],
+   "tags": [
+    "family",
+    "cardigan"
+   ]
+  }
+ ],
+ "cameras": [
+  {
+   "name": "closeup",
+   "pos": [
+    0.55,
+    0.04,
+    0.86
+   ],
+   "target": [
+    0.05,
+    0.0,
+    0.8300000000000001
+   ],
+   "fovy": 38
+  },
+  {
+   "name": "wide_overhead",
+   "pos": [
+    0.95,
+    0.0,
+    1.81
+   ],
+   "target": [
+    -0.15,
+    0.0,
+    0.76
+   ],
+   "fovy": 52
+  }
+ ],
+ "spawn": {
+  "position": [
+   0.0,
+   0.0,
+   0.76
+  ],
+  "yaw": 0,
+  "clearance": 0.12,
+  "bounds": [
+   -1.0,
+   -0.45,
+   0.76,
+   1.0,
+   0.45,
+   1.26
+  ]
+ }
+}

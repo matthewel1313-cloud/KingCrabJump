@@ -1,0 +1,141 @@
+<mujoco model="king_crab_operating_room">
+  <!-- King Crab, Surgical Tech: an OR instrument tray scaled to the Jumper robot.
+       Units: metres, kilograms. The robot spawns at the origin facing +X.
+       The tray top surface is z = 0 and is the package's ground. -->
+  <compiler angle="radian"/>
+
+  <visual>
+    <headlight ambient="0.20 0.21 0.22" diffuse="0.22 0.23 0.24" specular="0.05 0.05 0.05"/>
+    <quality shadowsize="4096"/>
+    <map znear="0.005" zfar="30" haze="0.0"/>
+    <global offwidth="1920" offheight="1920"/>
+  </visual>
+
+  <asset>
+    <!-- light teal "scrubs" backdrop -->
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.62 0.86 0.82" rgb2="0.36 0.66 0.62" width="64" height="384"/>
+    <texture name="steel_tex" type="2d" builtin="flat" rgb1="0.50 0.53 0.57" width="64" height="64" mark="random" random="0.10" markrgb="0.62 0.65 0.69"/>
+    <material name="steel" texture="steel_tex" texrepeat="40 40" specular="0.6" shininess="0.7" reflectance="0.10" rgba="1 1 1 1"/>
+    <material name="steel_edge" rgba="0.62 0.65 0.68 1" specular="0.9" shininess="0.9"/>
+    <texture name="drape_tex" type="2d" builtin="checker" rgb1="0.16 0.42 0.72" rgb2="0.15 0.40 0.69" width="128" height="128"/>
+    <material name="drape" texture="drape_tex" texrepeat="12 12" specular="0.05" shininess="0.05" rgba="1 1 1 1"/>
+    <material name="wall" rgba="0.55 0.80 0.76 1" specular="0.0"/>
+    <!-- instruments -->
+    <material name="inst_steel" rgba="0.80 0.82 0.85 1" specular="1" shininess="1" reflectance="0.2"/>
+    <material name="inst_dark" rgba="0.55 0.58 0.62 1" specular="1" shininess="1"/>
+    <material name="blade" rgba="0.92 0.94 0.97 1" specular="1" shininess="1" reflectance="0.3"/>
+    <material name="ring_gold" rgba="0.85 0.68 0.25 1" specular="1" shininess="0.9"/>
+    <texture name="gauze_tex" type="2d" builtin="checker" rgb1="1 1 1" rgb2="0.90 0.91 0.92" width="64" height="64"/>
+    <material name="gauze" texture="gauze_tex" texrepeat="6 6" specular="0" shininess="0" rgba="1 1 1 1"/>
+    <!-- glove -->
+    <material name="nitrile" rgba="0.30 0.55 0.95 1" specular="0.45" shininess="0.6"/>
+    <material name="cuff" rgba="0.25 0.48 0.88 1" specular="0.4" shininess="0.5"/>
+    <material name="gown" rgba="0.20 0.48 0.47 1" specular="0.05"/>
+  </asset>
+
+  <worldbody>
+    <!-- OR lights: bright cool-white overhead + soft fill -->
+    <light name="or_lamp" pos="0.1 0 1.6" dir="0 0 -1" diffuse="0.62 0.66 0.70" specular="0.35 0.35 0.35" castshadow="true" cutoff="60" exponent="2"/>
+    <light name="fill_a" pos="-1.2 -1.0 0.9" dir="1 0.8 -0.6" diffuse="0.20 0.22 0.25" specular="0 0 0" castshadow="false"/>
+    <light name="fill_b" pos="1.2 1.2 0.8" dir="-1 -1 -0.5" diffuse="0.14 0.16 0.18" specular="0 0 0" castshadow="false"/>
+
+    <!-- the instrument tray: stainless top (ground) with a rolled rim -->
+    <geom name="tray_top" type="box" pos="0.15 0 -0.02" size="0.75 0.75 0.02" material="steel" friction="0.9 0.01 0.001"/>
+    <geom name="rim_n" type="capsule" fromto="-0.6 0.75 0.006 0.9 0.75 0.006" size="0.008" material="steel_edge"/>
+    <geom name="rim_s" type="capsule" fromto="-0.6 -0.75 0.006 0.9 -0.75 0.006" size="0.008" material="steel_edge"/>
+    <geom name="rim_e" type="capsule" fromto="0.9 -0.75 0.006 0.9 0.75 0.006" size="0.008" material="steel_edge"/>
+    <geom name="rim_w" type="capsule" fromto="-0.6 -0.75 0.006 -0.6 0.75 0.006" size="0.008" material="steel_edge"/>
+
+    <!-- blue sterile drape around the edge, hanging over the sides (visual only) -->
+    <geom name="drape_n" type="box" pos="0.15 0.86 -0.03" size="0.98 0.10 0.004" euler="-0.35 0 0" material="drape" contype="0" conaffinity="0"/>
+    <geom name="drape_s" type="box" pos="0.15 -0.86 -0.03" size="0.98 0.10 0.004" euler="0.35 0 0" material="drape" contype="0" conaffinity="0"/>
+    <geom name="drape_e" type="box" pos="1.01 0 -0.03" size="0.10 0.98 0.004" euler="0 0.35 0" material="drape" contype="0" conaffinity="0"/>
+    <geom name="drape_w" type="box" pos="-0.71 0 -0.03" size="0.10 0.98 0.004" euler="0 -0.35 0" material="drape" contype="0" conaffinity="0"/>
+    <geom name="drape_fall_n" type="box" pos="0.15 0.97 -0.40" size="1.10 0.004 0.34" material="drape" contype="0" conaffinity="0"/>
+    <geom name="drape_fall_s" type="box" pos="0.15 -0.97 -0.40" size="1.10 0.004 0.34" material="drape" contype="0" conaffinity="0"/>
+    <geom name="drape_fall_e" type="box" pos="1.12 0 -0.40" size="0.004 1.10 0.34" material="drape" contype="0" conaffinity="0"/>
+    <geom name="drape_fall_w" type="box" pos="-0.82 0 -0.40" size="0.004 1.10 0.34" material="drape" contype="0" conaffinity="0"/>
+
+    <!-- distant OR wall in scrubs teal, so low camera angles do not see the void -->
+    <geom name="wall_far" type="box" pos="3.2 0 0.6" size="0.02 4 2" material="wall" contype="0" conaffinity="0"/>
+
+    <!-- ===== Mayo stand: a raised instrument table, draped in a blue sterile towel.
+         Top surface z = 0.097, front edge x = 0.215 (toward the crab). ===== -->
+    <geom name="mayo_top" type="box" pos="0.3375 0 0.0485" size="0.1225 0.34 0.0485" material="steel_edge"/>
+    <geom name="mayo_towel" type="box" pos="0.3375 0 0.0975" size="0.1245 0.342 0.0006" material="drape" contype="0" conaffinity="0"/>
+    <geom name="mayo_skirt_front" type="box" pos="0.2142 0 0.049" size="0.0008 0.342 0.049" material="drape" contype="0" conaffinity="0"/>
+    <geom name="mayo_skirt_n" type="box" pos="0.3375 0.3428 0.049" size="0.1245 0.0008 0.049" material="drape" contype="0" conaffinity="0"/>
+    <geom name="mayo_skirt_s" type="box" pos="0.3375 -0.3428 0.049" size="0.1245 0.0008 0.049" material="drape" contype="0" conaffinity="0"/>
+
+    <!-- off-camera back table where the circulating nurse "takes" used tools -->
+    <geom name="back_table" type="box" pos="2.6 -2.6 0.0" size="0.4 0.4 0.02" material="steel_edge"/>
+
+    <!-- ===== instruments: free rigid bodies, ~8.5 cm (scaled to Jumper's ~18 cm body /
+         14 cm claw), realistic masses. Handles point at the crab (-x) and overhang the
+         stand's front edge by ~2.5 cm so the claw can take them. ===== -->
+    <!-- scalpel: handle + blade, 15 g -->
+    <body name="scalpel" pos="0.2325 0.20 0.0998">
+      <freejoint name="scalpel_free"/>
+      <!-- explicit inertia: true mass, roll inertia padded a little (a 15 g, 5 mm thin
+           body under a weld is otherwise numerically stiff and buzzes) -->
+      <inertial pos="0 0 0" mass="0.015" diaginertia="4e-6 1.2e-5 1.4e-5"/>
+      <geom name="scalpel_handle" type="box" size="0.028 0.0050 0.0028" pos="-0.0145 0 0" material="inst_steel" mass="0.011" friction="1.0 0.01 0.001"/>
+      <geom name="scalpel_grip" type="box" size="0.012 0.0052 0.0030" pos="-0.028 0 0" material="inst_dark" mass="0.001"/>
+      <geom name="scalpel_blade" type="box" size="0.0135 0.0042 0.0008" pos="0.0275 0.0010 0" material="blade" mass="0.0025"/>
+      <geom name="scalpel_tip" type="box" size="0.0055 0.0028 0.0008" pos="0.0410 0.0022 0" euler="0 0 0.5" material="blade" mass="0.0003"/>
+    </body>
+
+    <!-- forceps: two thin prongs joined at the hinge end, 18 g -->
+    <body name="forceps" pos="0.2330 0.07 0.0995">
+      <freejoint name="forceps_free"/>
+      <!-- explicit inertia: true mass, roll inertia padded a little (a 15 g, 5 mm thin
+           body under a weld is otherwise numerically stiff and buzzes) -->
+      <inertial pos="0 0 0" mass="0.018" diaginertia="4e-6 1.4e-5 1.6e-5"/>
+      <geom name="forceps_hinge" type="box" size="0.0070 0.0072 0.0025" pos="-0.036 0 0" material="inst_steel" mass="0.006"/>
+      <geom name="forceps_prong_a" type="box" size="0.036 0.0026 0.0020" pos="0.0055 0.0062 0" euler="0 0 0.09" material="inst_steel" mass="0.006" friction="1.0 0.01 0.001"/>
+      <geom name="forceps_prong_b" type="box" size="0.036 0.0026 0.0020" pos="0.0055 -0.0062 0" euler="0 0 -0.09" material="inst_steel" mass="0.006" friction="1.0 0.01 0.001"/>
+      <geom name="forceps_grip_a" type="box" size="0.012 0.0028 0.0021" pos="-0.012 0.0042 0" euler="0 0 0.09" material="inst_dark" mass="0.0001"/>
+      <geom name="forceps_grip_b" type="box" size="0.012 0.0028 0.0021" pos="-0.012 -0.0042 0" euler="0 0 -0.09" material="inst_dark" mass="0.0001"/>
+    </body>
+
+    <!-- scissors: two crossed blades + gold finger rings, 28 g -->
+    <body name="scissors" pos="0.2310 -0.19 0.0997">
+      <freejoint name="scissors_free"/>
+      <!-- explicit inertia: true mass, roll inertia padded a little (a 15 g, 5 mm thin
+           body under a weld is otherwise numerically stiff and buzzes) -->
+      <inertial pos="0 0 0" mass="0.028" diaginertia="5e-6 1.8e-5 2.2e-5"/>
+      <geom name="scissors_blade_a" type="box" size="0.030 0.0033 0.0013" pos="0.020 0.0 0.0013" euler="0 0 0.13" material="blade" mass="0.007" friction="1.0 0.01 0.001"/>
+      <geom name="scissors_blade_b" type="box" size="0.030 0.0033 0.0013" pos="0.020 0.0 -0.0013" euler="0 0 -0.13" material="blade" mass="0.007" friction="1.0 0.01 0.001"/>
+      <geom name="scissors_shank_a" type="box" size="0.012 0.0025 0.0013" pos="-0.016 0.005 0.0013" euler="0 0 -0.4" material="inst_steel" mass="0.001"/>
+      <geom name="scissors_shank_b" type="box" size="0.012 0.0025 0.0013" pos="-0.016 -0.005 -0.0013" euler="0 0 0.4" material="inst_steel" mass="0.001"/>
+      <geom name="scissors_pivot" type="cylinder" size="0.0040 0.0032" pos="-0.006 0 0" material="inst_dark" mass="0.002"/>
+      <geom name="scissors_ring_a" type="cylinder" size="0.0100 0.0024" pos="-0.031 0.012 0" material="ring_gold" mass="0.005"/>
+      <geom name="scissors_ring_b" type="cylinder" size="0.0100 0.0024" pos="-0.031 -0.012 0" material="ring_gold" mass="0.005"/>
+      <geom name="scissors_ring_a_hole" type="cylinder" size="0.0058 0.0026" pos="-0.031 0.012 0" material="drape" contype="0" conaffinity="0" density="0"/>
+      <geom name="scissors_ring_b_hole" type="cylinder" size="0.0058 0.0026" pos="-0.031 -0.012 0" material="drape" contype="0" conaffinity="0" density="0"/>
+    </body>
+
+    <!-- gauze pad: soft white folded square, 6 g -->
+    <body name="gauze" pos="0.2250 -0.06 0.1018">
+      <freejoint name="gauze_free"/>
+      <!-- explicit inertia: true mass, roll inertia padded a little (a 15 g, 5 mm thin
+           body under a weld is otherwise numerically stiff and buzzes) -->
+      <inertial pos="0 0 0" mass="0.006" diaginertia="3e-6 3e-6 5e-6"/>
+      <geom name="gauze_pad" type="box" size="0.030 0.030 0.0045" material="gauze" mass="0.006" friction="1.4 0.02 0.002" solref="0.02 1.2"/>
+      <geom name="gauze_fold" type="box" size="0.030 0.0009 0.0046" pos="0 0.010 0.0002" rgba="0.86 0.87 0.88 1" contype="0" conaffinity="0" density="0"/>
+      <geom name="gauze_fold2" type="box" size="0.0009 0.030 0.0046" pos="-0.008 0 0.0002" rgba="0.88 0.89 0.90 1" contype="0" conaffinity="0" density="0"/>
+    </body>
+
+    <!-- the surgeon's gloved hand (blue nitrile): kinematic mocap, no collision -->
+    <body name="glove_hand" mocap="true" pos="2.6 2.6 1.5">
+      <geom name="hand_palm" type="ellipsoid" size="0.046 0.040 0.016" material="nitrile" contype="0" conaffinity="0"/>
+      <geom name="hand_f1" type="capsule" fromto="-0.040 0.030 0 -0.085 0.034 -0.004" size="0.0085" material="nitrile" contype="0" conaffinity="0"/>
+      <geom name="hand_f2" type="capsule" fromto="-0.043 0.010 0 -0.098 0.011 -0.004" size="0.009" material="nitrile" contype="0" conaffinity="0"/>
+      <geom name="hand_f3" type="capsule" fromto="-0.043 -0.010 0 -0.094 -0.011 -0.004" size="0.0088" material="nitrile" contype="0" conaffinity="0"/>
+      <geom name="hand_f4" type="capsule" fromto="-0.038 -0.029 0 -0.076 -0.033 -0.004" size="0.0078" material="nitrile" contype="0" conaffinity="0"/>
+      <geom name="hand_thumb" type="capsule" fromto="0.005 0.040 -0.004 -0.035 0.066 -0.012" size="0.0098" material="nitrile" contype="0" conaffinity="0"/>
+      <geom name="hand_wrist" type="capsule" fromto="0.035 0 0 0.090 0 0.010" size="0.030" material="cuff" contype="0" conaffinity="0"/>
+      <geom name="hand_sleeve" type="capsule" fromto="0.095 0 0.010 0.40 0 0.10" size="0.042" material="gown" contype="0" conaffinity="0"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,267 @@
+{
+ "schema": "kingcrab-choreography/1",
+ "title": "King Crab, Surgical Tech",
+ "bundle": "jumper_example.app (Jumper's shipped example bundle, unmodified)",
+ "control_script": "../sim/choreography.py (main_take, blooper_take)",
+ "control_hz": 200,
+ "modes_used": {
+  "claw_left": "jumper.five_foot: walks on five legs, carries the left claw; LT closes it. Entered with LB.",
+  "dance_dream_wings": "recorded-motion dance, both claws up. Entered with menu + d-pad right.",
+  "locomotion": "jumper.posture: the start-up mode (the hook's look-up is entered from here, LB is pressed at t=0)."
+ },
+ "pad_vocabulary": {
+  "Lx / Ly": "walk sideways / forward (ly < 0 is forward; 0.15 deadband)",
+  "Rx": "first half twists the body in place, beyond 0.5 walks a turn",
+  "Ry": "> 0 nose up (look up / offer a held tool up), < 0 nose down",
+  "LT": "close the left claw",
+  "LB": "toggle claw_left",
+  "menu + dpad_right": "dance_dream_wings"
+ },
+ "beats": [
+  {
+   "beat": "hook",
+   "pad": "LB tap; Ry +0.9 (look up at camera), release"
+  },
+  {
+   "beat": "scalpel",
+   "pad": "closed-loop Lx/Ly to the handle; LT 0.85; weld+seat; back off; Ry +0.45; Rx -0.45 (twist to surgeon); glove takes it; LT 0; Ry/Rx 0"
+  },
+  {
+   "beat": "forceps",
+   "pad": "same, shorter ramps and waits"
+  },
+  {
+   "beat": "scissors",
+   "pad": "stops at the gauze first: grasp; Ry +0.7 lift; Rx -0.42/+0.42 'hm?'; place back; LT 0; then the scissors as above"
+  },
+  {
+   "beat": "faster",
+   "pad": "Lx at full deflection to the gauze; same grasp/present, shortest waits"
+  },
+  {
+   "beat": "perfect",
+   "pad": "menu + d-pad right -> dance_dream_wings"
+  }
+ ],
+ "measured_marks": [
+  {
+   "t": 0.0,
+   "name": "beat",
+   "beat": "hook"
+  },
+  {
+   "t": 2.07,
+   "name": "beat",
+   "beat": "scalpel"
+  },
+  {
+   "t": 2.185,
+   "name": "aligned",
+   "tool": "scalpel"
+  },
+  {
+   "t": 3.045,
+   "name": "grasp",
+   "tool": "scalpel",
+   "grip": [
+    0.18,
+    0.208,
+    0.094
+   ],
+   "tool_center": [
+    0.207,
+    0.21,
+    0.061
+   ]
+  },
+  {
+   "t": 4.18,
+   "name": "present",
+   "tool": "scalpel"
+  },
+  {
+   "t": 4.935,
+   "name": "handoff",
+   "tool": "scalpel"
+  },
+  {
+   "t": 5.06,
+   "name": "check",
+   "tool": "scalpel"
+  },
+  {
+   "t": 5.71,
+   "name": "beat",
+   "beat": "forceps"
+  },
+  {
+   "t": 6.205,
+   "name": "aligned",
+   "tool": "forceps"
+  },
+  {
+   "t": 6.845,
+   "name": "grasp",
+   "tool": "forceps",
+   "grip": [
+    0.178,
+    0.076,
+    0.094
+   ],
+   "tool_center": [
+    0.21,
+    0.081,
+    0.067
+   ]
+  },
+  {
+   "t": 7.73,
+   "name": "present",
+   "tool": "forceps"
+  },
+  {
+   "t": 8.335,
+   "name": "handoff",
+   "tool": "forceps"
+  },
+  {
+   "t": 8.42,
+   "name": "check",
+   "tool": "forceps"
+  },
+  {
+   "t": 8.95,
+   "name": "beat",
+   "beat": "scissors"
+  },
+  {
+   "t": 9.4,
+   "name": "aligned",
+   "tool": "gauze"
+  },
+  {
+   "t": 10.04,
+   "name": "grasp",
+   "tool": "gauze",
+   "grip": [
+    0.179,
+    -0.058,
+    0.094
+   ],
+   "tool_center": [
+    0.2,
+    -0.055,
+    0.075
+   ]
+  },
+  {
+   "t": 10.24,
+   "name": "oops",
+   "tool": "gauze"
+  },
+  {
+   "t": 12.01,
+   "name": "putdown",
+   "tool": "gauze"
+  },
+  {
+   "t": 12.87,
+   "name": "aligned",
+   "tool": "scissors"
+  },
+  {
+   "t": 13.51,
+   "name": "grasp",
+   "tool": "scissors",
+   "grip": [
+    0.166,
+    -0.18,
+    0.092
+   ],
+   "tool_center": [
+    0.199,
+    -0.177,
+    0.06
+   ]
+  },
+  {
+   "t": 14.435,
+   "name": "present",
+   "tool": "scissors"
+  },
+  {
+   "t": 14.99,
+   "name": "handoff",
+   "tool": "scissors"
+  },
+  {
+   "t": 15.075,
+   "name": "check",
+   "tool": "scissors"
+  },
+  {
+   "t": 15.605,
+   "name": "beat",
+   "beat": "faster"
+  },
+  {
+   "t": 16.36,
+   "name": "aligned",
+   "tool": "gauze"
+  },
+  {
+   "t": 17.0,
+   "name": "grasp",
+   "tool": "gauze",
+   "grip": [
+    0.179,
+    -0.06,
+    0.093
+   ],
+   "tool_center": [
+    0.201,
+    -0.055,
+    0.075
+   ]
+  },
+  {
+   "t": 17.855,
+   "name": "present",
+   "tool": "gauze"
+  },
+  {
+   "t": 18.36,
+   "name": "handoff",
+   "tool": "gauze"
+  },
+  {
+   "t": 18.425,
+   "name": "check",
+   "tool": "gauze"
+  },
+  {
+   "t": 18.575,
+   "name": "beat",
+   "beat": "perfect"
+  },
+  {
+   "t": 19.195,
+   "name": "dance"
+  }
+ ],
+ "measured_modes": [
+  [
+   0.0,
+   "locomotion"
+  ],
+  [
+   0.005,
+   "claw_left"
+  ],
+  [
+   19.08000000000049,
+   "dance_dream_wings"
+  ]
+ ],
+ "physics_glue": "grasp/handoff are welds switched by the control script; see ../NOTES.md"
+}

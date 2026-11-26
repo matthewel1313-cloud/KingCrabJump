@@ -1,0 +1,4 @@
+# heavy, reproducible intermediates (see NOTES.md, "How to re-run")
+out/
+__pycache__/
+*.pyc

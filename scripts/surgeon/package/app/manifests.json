@@ -1,0 +1,89 @@
+{
+  "schema": "kk-deploy-manifests/1",
+  "_source": "KingCrabJump: the official `jumper` bundle reduced to the three modes the Surgical Tech film uses.",
+  "bundles": {
+    "king_crab_surgeon": {
+      "description": "King Crab, Surgical Tech: jumper.posture walking by default; jumper.five_foot carrying the left claw on LB (V), which the film uses to fetch, grip and present instruments (LT closes the claw); the dream-wings dance on Menu + right (Ctrl + 4) for the finish; Menu (Ctrl) alone leaves the dance. Same controls as the official jumper app for these modes.",
+      "fsm": "king_crab_surgeon.controller.toml",
+      "leave": [
+        {
+          "name": "leave_motion",
+          "leaves": [
+            "dance_dream_wings"
+          ],
+          "pad": {
+            "button": "menu",
+            "on": "fall",
+            "from": [
+              "dance_dream_wings"
+            ]
+          },
+          "keys": {
+            "key": [
+              "ctrl"
+            ],
+            "on": "fall",
+            "from": [
+              "dance_dream_wings"
+            ]
+          }
+        }
+      ],
+      "modes": {
+        "locomotion": {
+          "task": "jumper.posture",
+          "policy": "tasks/jumper/posture/out/example"
+        },
+        "claw_left": {
+          "task": "jumper.five_foot",
+          "policy": "tasks/jumper/five_foot/out/example",
+          "hook": {
+            "side": "left"
+          },
+          "pad": {
+            "button": "LB",
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_v"
+            ],
+            "on": "toggle",
+            "from": [
+              "locomotion"
+            ]
+          }
+        },
+        "dance_dream_wings": {
+          "task": "jumper.dance_dream_wings",
+          "policy": "tasks/jumper/dance_dream_wings/out/example",
+          "pad": {
+            "button": "dpad_right",
+            "with": "menu",
+            "on": "toggle",
+            "from": [
+              "locomotion",
+              "claw_left",
+              "dance_dream_wings"
+            ]
+          },
+          "keys": {
+            "key": [
+              "key_4",
+              "keypad_4"
+            ],
+            "with": "ctrl",
+            "on": "toggle",
+            "from": [
+              "locomotion",
+              "dance_dream_wings"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
